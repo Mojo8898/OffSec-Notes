@@ -1,0 +1,14 @@
+- Started with [nmap](nmap.md)
+- Found that the machine is an AD server, so continued with [rpcclient](rpcclient.md)
+- rpcclient was a dead end, so continued with [smbclient](smbclient.md)
+- Found multiple shares open so continued enumeration with [crackmapexec](crackmapexec.md)
+- Found that the `Shares` folder has read permissions so I mounted the folder with the command: `sudo mount -t cifs \\\\10.10.11.152\\Shares /home/kali/htb/boxes/easy/timelapse/smb`
+- Found a password protected zip file that I then harvested the hash from using [zip2john](zip2john.md)
+- Cracked the hash using [john](john.md)
+- Upon unzipping the file with the cracked password, I found another password protected file named `legacyy_dev_auth.pfx`
+- Upon doing some research I found that pfx files contain SSL certificates and their corresponding private keys
+- Harvested the hash from `legacyy_dev_auth.pfx` with [pfx2john](pfx2john.md)
+- Cracked the hash using [john](john.md)
+- Extracted the certificate and private key from the `legacyy_dev_auth.pfx` file using [openssl](openssl.md) ([Extracting the certificate and keys from a .pfx file](https://www.ibm.com/docs/en/arl/9.7?topic=certification-extracting-certificate-keys-from-pfx-file))
+- Gained user access to the box with [evil-winrm](evil-winrm.md)
+- After a bit of manual enumeration, find the file.

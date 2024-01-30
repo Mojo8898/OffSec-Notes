@@ -1,0 +1,31 @@
+`/proc/self/cmdline`
+- `/usr/local/bin/python/app/run.py'
+
+`/proc/self/environ`
+- `PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin`
+- **`HOSTNAME=5b9f8de7f69c`**
+- `LANG=C.UTF-8G`
+- **`PG_KEY=A035C8C19219BA821ECEA86B64E628F8D684696D`**
+- `PYTHON_VERSION=3.10.3`
+- `PYTHON_PIP_VERSION=22.0.4`
+- `PYTHON_SETUPTOOLS_VERSION=58.1.0`
+- `PYTHON_GET_PIP_URL=https://github.com/pypa/get-pip/raw/38e54e5de07c66e875c11a1ebbdb938854625dd8/public/get-pip.py`
+- `PYTHON_GET_PIP_SHA256=e235c437e5c7d7524fbce3880ca39b917a73dc565e0c813465b7a7a329bb279a`
+- `PYTHONDONTWRITEBYTECODE=1`
+- `MODE=PRODUCTION`
+- `FLASK_DEBUG=1`
+- `HOME=/root`
+- `SUPERVISOR_ENABLED=1`
+- `SUPERVISOR_PROCESS_NAME=flask`
+- `SUPERVISOR_GROUP_NAME=flask`
+- `WERKZEUG_SERVER_FD=3`
+- `WERKZEUG_RUN_MAIN=true`
+
+PID: 8
+Parent PID: 7
+`/prof/self/stat`
+- `8 (python) S 7 7 1 0 -1 4194560 38048989 0 0 0 38349 23069 0 0 20 0 3 0 5207 2171256832 526966 18446744073709551615 94050728845312 94050728850009 140723763939488 0 0 0 0 16781312 16386 0 0 0 17 1 0 0 0 0 0 94050728861184 94050728861704 94050756972544 140723763940675 140723763940709 140723763940709 140723763941346 0`
+
+`/app/public/uploads/`
+
+Use ..// to exploit as ../ is taken out while leaving / for absolute path

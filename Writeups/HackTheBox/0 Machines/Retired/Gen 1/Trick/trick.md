@@ -1,0 +1,4 @@
+- Started with [[write-ups/easy/trick/nmap]] and found ports 22, 25, 53 and 80 open.
+- Webpage appears to be relatively empty and [[write-ups/easy/trick/dirsearch]] reveals nothing of note.
+- Running [[write-ups/easy/trick/dig]] reveals the hidden subdomains: "root.trick.htb" and "preprod-payroll.trick.htb".
+- The subdomain "preprod-payroll.trick.htb" turns out to be a login page, that we can .

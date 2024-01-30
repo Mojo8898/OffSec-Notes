@@ -1,0 +1,7 @@
+# Methodology
+
+### Enumeration
+
+```bash
+
+```

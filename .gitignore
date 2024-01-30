@@ -1,0 +1,9 @@
+# Ignoring Development material
+Dev
+
+# Ignoring OSCP material
+OSCP
+
+# Ignore directories containing active HackTheBox content
+Writeups/HackTheBox/*/Active
+Writeups/HackTheBox/5 Pro Labs

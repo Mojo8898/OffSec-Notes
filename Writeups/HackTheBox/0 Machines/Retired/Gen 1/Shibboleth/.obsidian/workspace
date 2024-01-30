@@ -1,0 +1,112 @@
+{
+  "main": {
+    "id": "c32319a80116574d",
+    "type": "split",
+    "children": [
+      {
+        "id": "d65950df520d8a9a",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "nmap.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "fa11f07462c8eeab",
+    "type": "split",
+    "children": [
+      {
+        "id": "6a9500be4017d7dc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2d62827fc3308110",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "8791df0dd2be0b4d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 227
+  },
+  "right": {
+    "id": "f6962d7131b99ff4",
+    "type": "split",
+    "children": [
+      {
+        "id": "6992c08efcef8233",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3e255c9ecc77debe",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "nmap.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "b5d8e2883557d005",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "d65950df520d8a9a",
+  "lastOpenFiles": [
+    "port-80.md",
+    "nmap.md",
+    "screenshots/Pasted image 20220722134417.png",
+    "screenshots/Pasted image 20220722134425.png",
+    "Pasted image 20220722134357.png",
+    "Pasted image 20220722134337.png",
+    "previse.md",
+    "src.md",
+    "dirsearch.md",
+    "easy/previse/sensitive-info.md"
+  ]
+}

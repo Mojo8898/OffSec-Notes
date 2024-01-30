@@ -1,0 +1,184 @@
+{
+  "main": {
+    "id": "0a4681d1bd0f3ccd",
+    "type": "split",
+    "children": [
+      {
+        "id": "9b9c4d2e8bf46fc2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "11805a21d0388d7d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "def75e95f6b85e9f",
+    "type": "split",
+    "children": [
+      {
+        "id": "48964a4f8b13207c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "45c4f1d872e58605",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "df395571c07f867d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "enumeration",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "956b117691dbdd23",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 320.5
+  },
+  "right": {
+    "id": "43f2b1dd61471c59",
+    "type": "split",
+    "children": [
+      {
+        "id": "baacf29172e998d7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0029bcd5d279a5a8",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "README.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "bebc0463f0feae2b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "README.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 274.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "graph:Open graph view": false,
+      "templates:Insert template": true,
+      "canvas:Create new canvas": false,
+      "switcher:Open quick switcher": false,
+      "command-palette:Open command palette": false,
+      "markdown-importer:Open format converter": false,
+      "workspaces:Manage workspace layouts": false
+    }
+  },
+  "active": "11805a21d0388d7d",
+  "lastOpenFiles": [
+    "Templates/HTB/HTB Machine.md",
+    "Dev/Misc.md",
+    "Templates/OSCP/OSCP Host List.md",
+    "Templates/OSCP/OSCP Overview.md",
+    "Templates/OSCP/OSCP Host.md",
+    "Templates/HTB/HTB Overview.md",
+    "Templates/Port.md",
+    "Templates/Loot.md",
+    "Templates/Methodology.md",
+    "Templates/Tool.md",
+    "README.md",
+    "Reference Material.md",
+    "Writeups/HackTheBox/5 Pro Labs",
+    "Writeups/HackTheBox/4 Engames/Retired",
+    "Writeups/HackTheBox/4 Engames/Active",
+    "Writeups/HackTheBox/2 Sherlocks/Retired",
+    "Writeups/HackTheBox/2 Sherlocks/Active",
+    "Writeups/HackTheBox/4 Engames",
+    "Writeups/HackTheBox/2 Sherlocks",
+    "Writeups/HackTheBox/0 Machines/Gen 1/Codify/Enumeration.md",
+    "Writeups/HackTheBox/0 Machines/Gen 1/Codify/Foothold.md",
+    "Writeups/HackTheBox/0 Machines/Gen 1/Codify/Lateral Movement.md",
+    "Writeups/HackTheBox/0 Machines/Gen 1/Codify/proof.md",
+    "Writeups/HackTheBox/0 Machines/Gen 1/Codify/Privilege Escalation.md",
+    "To-Do.md",
+    "Writeups/HackTheBox/0 Machines/Gen 3/Rebound/10.129.207.146.md",
+    "Writeups/HackTheBox/0 Machines/Gen 3/Rebound/Ports/445 - smb.md",
+    "Writeups/HackTheBox/1 Challenges/Retired",
+    "Writeups/HackTheBox/1 Challenges/Active",
+    "Writeups/HackTheBox/3 Fortresses/Retired",
+    "Writeups/HackTheBox/0 Machines/Gen 3/Corporate/Overview.md",
+    "Writeups/HackTheBox/0 Machines/Gen 3/Ouija/10.129.59.157.md",
+    "Writeups/HackTheBox/0 Machines/Gen 3/Napper/10.129.229.166.md",
+    "Writeups/HackTheBox/0 Machines/Gen 3/Analysis/10.129.187.203.md",
+    "Frameworks/Graphable (cerberus)/10.10.11.205/10.10.11.205.md",
+    "Writeups/HackTheBox/0 Machines/Gen 3/Drive/10.129.229.198.md",
+    "Playbook/5 Web/Attachments/Pasted image 20240121231222.png",
+    "Writeups/HackTheBox/0 Machines/Gen 3/Rebound/Ports/Attachments/Pasted image 20240128081827.png",
+    "Playbook/13 Active Directory/Kerberos Flow.canvas",
+    "Writeups/HackTheBox/0 Machines/Gen 3/Pov/Attachments/Pasted image 20240128024413.png",
+    "Writeups/HackTheBox/0 Machines/Gen 3/Pov/Attachments/Pasted image 20240128024401.png",
+    "Writeups/HackTheBox/0 Machines/Gen 3/Pov/Attachments/Pasted image 20240128024344.png",
+    "Writeups/HackTheBox/0 Machines/Gen 3/Pov/Attachments/Pasted image 20240128023859.png",
+    "Writeups/HackTheBox/0 Machines/Gen 3/Pov/Attachments/Pasted image 20240128023745.png",
+    "Writeups/HackTheBox/0 Machines/Gen 3/Pov/Attachments/Pasted image 20240128014414.png",
+    "Writeups/HackTheBox/0 Machines/Gen 3/Pov/Attachments/Pasted image 20240128013957.png",
+    "Writeups/HackTheBox/0 Machines/Gen 3/Pov/Ports/Attachments/Pasted image 20240128004534.png",
+    "Writeups/HackTheBox/0 Machines/Gen 3/Ouija/Network Diagram.canvas",
+    "Frameworks/Graphable (cerberus)/10.10.11.205/Connection Chain.canvas",
+    "Frameworks/Exam/AD Set/Active Directory Set.canvas",
+    "Untitled 2.canvas",
+    "Untitled 1.canvas",
+    "Exam/AD Set/Active Directory Set.canvas",
+    "Writeups/HackTheBox/0 Machines/Gen 1/Precious/Attachments/Untitled.canvas"
+  ]
+}
