@@ -2,7 +2,7 @@
 
 ### Tools
 
-- [Sliver](Tools/Sliver/Sliver.md)
+- [Sliver](Sliver/Sliver.md)
 
 ### Links
 

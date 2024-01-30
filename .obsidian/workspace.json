@@ -8,19 +8,33 @@
         "type": "tabs",
         "children": [
           {
-            "id": "11805a21d0388d7d",
+            "id": "8da72cb7117d12ce",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "Dev/Sus/Bypass Nessus Registration.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "8f3dac4c0a1b576c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Playbook/25 Vulnerability Scanners/Nessus/Nessus.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -86,7 +100,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "Playbook/25 Vulnerability Scanners/Nessus/Nessus.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +117,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "Playbook/25 Vulnerability Scanners/Nessus/Nessus.md"
               }
             }
           }
@@ -124,10 +138,15 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "11805a21d0388d7d",
+  "active": "8f3dac4c0a1b576c",
   "lastOpenFiles": [
-    "Templates/HTB/HTB Machine.md",
+    "Dev/Sus/Bypass Nessus Registration.md",
+    "Playbook/25 Vulnerability Scanners/Nessus/Nessus.md",
+    "README.md",
     "Dev/Misc.md",
+    "Dev/Sus/Untitled",
+    "Dev/Sus",
+    "Templates/HTB/HTB Machine.md",
     "Templates/OSCP/OSCP Host List.md",
     "Templates/OSCP/OSCP Overview.md",
     "Templates/OSCP/OSCP Host.md",
@@ -136,7 +155,6 @@
     "Templates/Loot.md",
     "Templates/Methodology.md",
     "Templates/Tool.md",
-    "README.md",
     "Reference Material.md",
     "Writeups/HackTheBox/5 Pro Labs",
     "Writeups/HackTheBox/4 Engames/Retired",
@@ -154,14 +172,10 @@
     "Writeups/HackTheBox/0 Machines/Gen 3/Rebound/10.129.207.146.md",
     "Writeups/HackTheBox/0 Machines/Gen 3/Rebound/Ports/445 - smb.md",
     "Writeups/HackTheBox/1 Challenges/Retired",
-    "Writeups/HackTheBox/1 Challenges/Active",
-    "Writeups/HackTheBox/3 Fortresses/Retired",
     "Writeups/HackTheBox/0 Machines/Gen 3/Corporate/Overview.md",
     "Writeups/HackTheBox/0 Machines/Gen 3/Ouija/10.129.59.157.md",
     "Writeups/HackTheBox/0 Machines/Gen 3/Napper/10.129.229.166.md",
     "Writeups/HackTheBox/0 Machines/Gen 3/Analysis/10.129.187.203.md",
-    "Frameworks/Graphable (cerberus)/10.10.11.205/10.10.11.205.md",
-    "Writeups/HackTheBox/0 Machines/Gen 3/Drive/10.129.229.198.md",
     "Playbook/5 Web/Attachments/Pasted image 20240121231222.png",
     "Writeups/HackTheBox/0 Machines/Gen 3/Rebound/Ports/Attachments/Pasted image 20240128081827.png",
     "Playbook/13 Active Directory/Kerberos Flow.canvas",
