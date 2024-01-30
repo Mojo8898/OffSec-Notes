@@ -11,41 +11,89 @@ Fuzz everything
 ## Capabilities
 
 ```bash
-# Directory fuzzing
-ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt -u 'http://analysis.htb/FUZZ' -ic
-
-# Discover endpoints under 403 vhost (used lowercase list as previous scans revealed the website to be case insensitive)
-ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-lowercase-2.3-small.txt -u 'http://internal.analysis.htb/FUZZ' -ic -recursion --recursion-depth 1 -e .php
+# VHost fuzzing
+ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -u 'http://example.com' -H 'Host: FUZZ.example.com'
 
 # Extension fuzzing
-ffuf -w /usr/share/seclists/Discovery/Web-Content/web-extensions.txt -u 'http://internal.analysis.htb/dashboard/indexFUZZ'
+ffuf -w /usr/share/seclists/Discovery/Web-Content/web-extensions.txt -u 'http://example.com/indexFUZZ'
 
-# Page fuzzing
-ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt -u http://example.com/FUZZ.php -ic
+# Directory fuzzing
+ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt -u 'http://example.com/FUZZ' -ic
 
-# Sub-domain fuzzing (public DNS records)
-ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -u http://FUZZ.example.com
+# Recursive directory fuzzing
+ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt -u 'http://example.com/FUZZ' -ic -recursion --recursion-depth 1 -e .php
 
-# VHost fuzzing
-ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -u http://example.com -H 'Host: FUZZ.example.com'
+# Targeted file fuzzing
+ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-medium-files.txt -u 'http://example.com/FUZZ'
 
-# Get request fuzzing
-ffuf -w /usr/share/seclists/Discovery/Web-Content/burp-parameter-names.txt -u http://example.com?FUZZ=key
+# GET parameter fuzzing
+ffuf -w /usr/share/seclists/Discovery/Web-Content/burp-parameter-names.txt -u 'http://example.com?FUZZ=key'
 
-# POST Request Fuzzing
-ffuf -w /usr/share/seclists/Discovery/Web-Content/burp-parameter-names.txt -u http://example.com -X POST -d 'FUZZ=key' -H 'Content-Type: application/x-www-form-urlencoded'
+# GET parameter value fuzzing
+ffuf -w /usr/share/seclists/Fuzzing/special-chars.txt -u 'http://example.com?param=FUZZ'
+
+# POST parameter fuzzing
+ffuf -w /usr/share/seclists/Discovery/Web-Content/burp-parameter-names.txt -u 'http://example.com' -X POST -d 'FUZZ=key' -H 'Content-Type: application/x-www-form-urlencoded'
+
+# FUZZ using a request copied from burp (helpful with json data)
+ffuf -request search.req -request-proto http -w /usr/share/seclists/Usernames/Names/names.txt
+
+# Same as previous example but using 2 wordlists to fuzz 2 values inside of request. Sequence wordlist is used first as 
+ffuf -request search.req -request-proto http -w <(seq 0 7):F2,/usr/share/seclists/Usernames/Names/names.txt:F1
+
+# Use burp proxy to intercept and view request before sending it
+ffuf -w /usr/share/seclists/Fuzzing/special-chars.txt -u 'http://example.com?param=FUZZ' -x http://localhost:8080
+
+# Sub-domain fuzzing (public DNS records, bad practice)
+ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -u 'http://FUZZ.example.com'
 ```
 
-Fuzz special characters where `search.req` is a GET request copied to file from burp
+**Note:** 
+
+- Use lowercase wordlists when fuzzing case-insensitive web servers (common with Windows)
+- If initial directory scan yields nothing and you have no other leads, use a list for the specific technology you are encountering.
+
+My `/home/kali/.config/ffuf/ffufrc`
+
+```
+[general]
+    colors = true
+    threads = 50
+```
+
+## Wordlists
 
 ```bash
-ffuf -request search.req -request-proto http -w /usr/share/seclists/Fuzzing/special-chars.txt
+# Directory/File Fuzzing (general), Add extensions if no initial leads or looking for an endpoint
+/usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt # 87664 lines
+/usr/share/seclists/Discovery/Web-Content/directory-list-lowercase-2.3-small.txt
+
+/usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt # 220560 lines
+/usr/share/seclists/Discovery/Web-Content/directory-list-lowercase-2.3-medium.txt
+
+# Directory Fuzzing (targeted)
+/usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt # 30000 lines
+/usr/share/seclists/Discovery/Web-Content/raft-medium-directories-lowercase.txt
+
+# File Fuzzing (targeted)
+/usr/share/seclists/Discovery/Web-Content/raft-medium-files.txt # 17129 lines
+/usr/share/seclists/Discovery/Web-Content/raft-medium-files-lowercase.txt
+
+# Vhosts/subdomains
+/usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt
+/usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt
+
+# Extensions
+/usr/share/seclists/Discovery/Web-Content/web-extensions.txt
+
+# Special characters
+/usr/share/seclists/Fuzzing/special-chars.txt
+
+# All characters and symbols
+/usr/share/seclists/Fuzzing/alphanum-case-extra.txt
+
+# Usernames
+/usr/share/seclits/Usernames/Names/names.txt
 ```
 
-Output can be filtered with `-fx` and matched with `-mx` (replacing `x` with `s` for specifying size for example)
-
-If initial directory scan yields nothing, use a list for the specific technology you are encountering.
-
-Run additional, tailored scans based on the websites backend framework, such as Spring Boot: `/usr/share/seclists/Discovery/Web-Content/spring-boot.txt`
-
-Use `/usr/share/seclists/Discovery/Web-Content/directory-list-lowercase-2.3-small.txt` (lowercase) against servers that are case-insensitive (common with Windows servers)
+**Note:** `directory-list-2.3` contains comments and requires `-ic` to ignore comments in `ffuf`

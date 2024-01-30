@@ -1,14 +1,25 @@
 # LDAP Injection
 
-Indicator:
+## Indicator
 
-![](../Attachments/Pasted%20image%2020240121231222.png)
+```bash
+ffuf -w /usr/share/seclists/Fuzzing/special-chars.txt -u 'http://example.com?param=FUZZ'
+```
+
+**Output:**
+
+```
+*                      [Status: 200, ...]
+(                      [Status: 200, ...]
+\                      [Status: 200, ...]
+)                      [Status: 200, ...]
+```
 
 ## Methodology
 
 End with null byte (`%00`), add `)` progressively to understand the context of the query
 
-https://youtube.com/watch?v=51JQg202csw&t=885
+IppSec video: https://youtube.com/watch?v=51JQg202csw&t=885
 
 Null byte in ldap is the equivalent to a comment in SQL injection, terminating the statement
 

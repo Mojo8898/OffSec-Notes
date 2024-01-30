@@ -2,14 +2,15 @@
 
 ```bash
 # Query records
-dig any @$IP offsec.local
-dig a @10.10.10.10 offsec.local
+dig any @$IP $DOMAIN
+dig a @$IP $DOMAIN
 
 # Reverse lookup
-dig -x @10.10.10.10 10.10.10.10
+dig -x @$IP $IP
 
 # Attempt a zone transfer
-dig axfr @10.10.10.10 offsec.local
+dig axfr @$IP
+dig axfr @$IP $DOMAIN
 ```
 
 Notes: Add `+short` to get concise output. Sometimes `ANY` requests are blocked to prevent DoS and all record types need to be enumerated manually.
