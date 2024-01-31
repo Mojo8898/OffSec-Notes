@@ -15,5 +15,5 @@ OSINT via google products such as email, Gaia ID, or shared drive/folder - https
 ghunt login
 
 # Enumerate email
-ghunt email test@gmail.com
+ghunt email example@gmail.com
 ```

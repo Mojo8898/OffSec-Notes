@@ -12,5 +12,5 @@ Find lookalike domains that adversaries can use to attack you - https://github.c
 
 ```bash
 # Only show registered domains
-dnstwist -r github.com
+dnstwist -r example.com
 ```

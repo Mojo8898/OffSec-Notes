@@ -1,6 +1,6 @@
 # Powershell
 
-## Hotkeys
+## ISE Hotkeys
 
 - Switch to console pane: `Ctrl + d`
 - Switch to scripting pane: `Ctrl + i`

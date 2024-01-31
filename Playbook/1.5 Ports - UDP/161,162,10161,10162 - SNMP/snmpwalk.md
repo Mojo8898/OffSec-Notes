@@ -12,5 +12,5 @@ Enumerate SNMP community strings
 
 ```bash
 # Enumerate the public community string
-snmpwalk -v2c -c public 10.10.10.10 -Oa
+snmpwalk -v2c -c public $IP -Oa
 ```

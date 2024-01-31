@@ -2,7 +2,7 @@
 
 ## Virtual Environments
 
-Stop clobbering your system from python installations
+Stop clobbering your system with python installations
 
 ### Option 1: pipx (recommended if possible)
 
@@ -30,4 +30,4 @@ source venv/bin/activate
 python3 setup.py install
 ```
 
-Note: Use `ipython3` for debugging/executing blocks on the fly
+**Note:** Use `ipython3` for debugging/executing blocks on the fly

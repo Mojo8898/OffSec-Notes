@@ -14,7 +14,7 @@ Primarily provides curated google searches to dork common social media sites for
 
 ```bash
 # Scan a phone number with the country code +1 (US)
-./phoneinfoga scan -n '+1 415-555-2671'
+./phoneinfoga scan -n '+1 123-123-1234'
 
 # Serve as a web GUI
 ./phoneinfoga serve

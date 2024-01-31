@@ -27,4 +27,7 @@ git log
 
 # Show changes related to a specified commit
 git show <commit_id>
+
+# Restore to previous commit
+git checkout -- .
 ```

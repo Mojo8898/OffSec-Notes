@@ -1,5 +1,7 @@
 # Methodology
 
+## Enumeration
+
 ```bash
 # Query records
 dig any @$IP $DOMAIN

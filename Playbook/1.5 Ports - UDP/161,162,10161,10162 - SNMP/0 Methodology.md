@@ -2,10 +2,10 @@
 
 ```bash
 # Enumerate the public community string
-snmpwalk -v2c -c public 10.10.10.10 -Oa
+snmpwalk -v2c -c public $IP -Oa
 
 # Brute force community strings
-python3 snmpbrute.py -t 10.129.184.73 -f /usr/share/seclists/Discovery/SNMP/common-snmp-community-strings.txt
+python3 snmpbrute.py -t $IP -f /usr/share/seclists/Discovery/SNMP/common-snmp-community-strings.txt
 ```
 
 Note: Append the following OID's to the command in order to start enumerating at the relevant point

@@ -13,5 +13,5 @@ Requires API keys
 
 ```bash
 # Search subdomains
-./subfinder -d hackerone.com -v
+./subfinder -d example.com -v
 ```
