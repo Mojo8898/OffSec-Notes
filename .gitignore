@@ -7,3 +7,6 @@ OSCP
 # Ignore directories containing active HackTheBox content
 Writeups/HackTheBox/*/Active
 Writeups/HackTheBox/5 Pro Labs
+
+# Ignore obsidian workspace files
+.obsidian/workspace*
