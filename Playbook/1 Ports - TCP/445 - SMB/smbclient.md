@@ -9,19 +9,21 @@ Interact with SMB
 
 ```bash
 # List shares
-smbclient -L 10.10.10.10
+smbclient -L //$IP -U 'username'
 
 # Access a share
-smbclient //10.10.10.10/share
+smbclient //$IP/share -U 'username'
 
 # Upload a file
-smbclient //192.168.50.195/share -c 'put config.Library-ms'
+smbclient //$IP/share -c 'put example.txt'
 ```
 
 ### Interacting with a share
 
 ```bash
 # Download all files in the current share
+mask ""
+recurse
 prompt
 mget *
 ```

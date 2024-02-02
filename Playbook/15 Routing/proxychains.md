@@ -1,6 +1,7 @@
 ---
 tags:
-  - networking
+  - tool
+  - routing
 ---
 # proxychains
 

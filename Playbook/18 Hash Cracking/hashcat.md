@@ -1,10 +1,13 @@
 ---
 tags:
-  - password_cracking
+  - tool
+  - hash_cracking
 ---
 # hashcat
 
 Crack hashes
+
+Reference: [example_hashes](https://hashcat.net/wiki/doku.php?id=example_hashes), make sure to remove escape characters from the hash if necessary (`\`)
 
 ## Capabilities
 

@@ -1,6 +1,7 @@
 ---
 tags:
-  - password_cracking
+  - tool
+  - hash_cracking
 ---
 # hashid
 

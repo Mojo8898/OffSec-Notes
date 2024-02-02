@@ -46,4 +46,4 @@ ffuf -w /usr/share/seclists/Fuzzing/LDAP-active-directory-attributes.txt -u 'htt
 
 We match size of 418 cause this is output size matches where the website doesnt break and provides expected output.
 
-Check the following writeup to continue following the logic: [10.129.187.203](../../../Writeups/HackTheBox/0%20Machines/Gen%203/Analysis/10.129.187.203.md)
+Check the following writeup to continue following the logic: 

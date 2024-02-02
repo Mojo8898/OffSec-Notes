@@ -1,5 +1,6 @@
 ---
 tags:
+  - tool
   - reverse_engineering
 ---
 # gdb

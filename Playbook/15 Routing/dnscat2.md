@@ -1,5 +1,7 @@
 ---
 tags:
+  - tool
+  - routing
 ---
 # dnscat2
 

@@ -22,6 +22,7 @@ nxc smb $IP -u 'a' -p ''
 
 # Enumerate shares
 nxc smb $IP -u 'a' -p '' --shares
+nxc smb $IP -u 'a' -p '' --spider SHARE --depth 1
 
 # Spider all shares, downloading all readable files
 nxc smb $IP -u '' -p '' -M spider_plus -o DOWNLOAD_FLAG=True OUTPUT_FOLDER=.

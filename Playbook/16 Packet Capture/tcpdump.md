@@ -1,14 +1,18 @@
 ---
 tags:
-  - routing
+  - tool
+  - packet_capture
 ---
 # tcpdump
 
-View traffic
+View raw incoming traffic
 
 ## Capabilities
 
 ```bash
+# Listen for incoming ICMP traffic (massively helpful for testing blind RCE)
+sudo tcpdump -i tun0 icmp
+
 # Listen for tcp traffic coming into the tun0 interface on port 8080
 sudo tcpdump -nvvvXi tun0 tcp port 8080
 

