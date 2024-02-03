@@ -4,8 +4,8 @@
 
 - [HackTricks](https://book.hacktricks.xyz/pentesting-web/sql-injection)
 - [pentestmonkey](https://pentestmonkey.net/category/cheat-sheet/sql-injection)
-- [PortSwigger Cheat Sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
 - [PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/SQL%20Injection)
+- [PortSwigger Cheat Sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
 - [invicti](https://www.invicti.com/blog/web-security/sql-injection-cheat-sheet/)
 
 **Key Concept:** We start with a baseline of expected output, then attempt to error the database or extract information based on deviations from this expected output. These deviations can include anything from an on-screen error, to entirely different HTTP response codes.

