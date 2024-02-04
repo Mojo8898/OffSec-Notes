@@ -1,5 +1,7 @@
 # Methodology
 
+## Brute Force
+
 ```bash
 # Brute force valid usernames
 ./kerbrute userenum -d $DOMAIN --dc $IP users.txt -v

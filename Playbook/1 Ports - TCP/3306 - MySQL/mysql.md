@@ -9,8 +9,6 @@ Interact with `mysql` databases
 
 ## Capabilities
 
-### Connection
-
 ```bash
 # Connect locally
 mysql -u root -p'password'
@@ -19,7 +17,7 @@ mysql -u root -p'password'
 mysql -u 'username' -p'password' -h $IP
 ```
 
-### Enumeration
+### Session Commands
 
 ```mysql
 # Check version
@@ -28,12 +26,12 @@ select version();
 # Check current database user
 select system_user();
 
-# Enumerate databases
+# Select database to enumerate
 show databases;
-use <database>;
+use example_db;
 
 # Enumerate tables
 show tables;
-SELECT * FROM user;
-SELECT user, session_token FROM user WHERE user = 'username';
+SELECT * FROM example_table;
+SELECT example_val1, example_val2 FROM example_table WHERE example_val1 = 'username';
 ```

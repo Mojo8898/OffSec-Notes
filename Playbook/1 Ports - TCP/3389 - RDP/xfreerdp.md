@@ -17,3 +17,5 @@ xfreerdp /cert-ignore /u:jeff /d:corp.com /p:HenchmanPutridBonbon11 /v:192.168.5
 # Also share a directory in the connection (this can break connections sometimes)
 xfreerdp /u:drbrown /p:'chr!$br0wn' /v:10.10.11.241 /drive:shared,$(pwd)
 ```
+
+**Note:** `/drive:shared,$(pwd)` shares the current working directory on your attack box, discoverable via `This PC` in `File Explorer`

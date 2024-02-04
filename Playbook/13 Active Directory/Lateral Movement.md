@@ -87,7 +87,7 @@ Requires:
 
 ### Pass the Hash
 
-[wmiexec](../14%20Impacket%20Tools/wmiexec.md)
+[wmiexec](0%20Tools/Connect/wmiexec.md)
 
 This techniques works against Active Directory domain accounts and the built-in local administrator account.
 

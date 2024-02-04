@@ -1,9 +1,15 @@
 # Methodology
 
-```bash
-# Login
-psql -h 127.0.0.1 -U postgres
+## Connect
 
+```bash
+# Connect with credentials
+psql -h $IP -U username
+```
+
+## Enumerate Database
+
+```mysql
 # List databases
 \l
 

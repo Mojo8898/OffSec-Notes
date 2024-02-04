@@ -4,12 +4,20 @@ tags:
 ---
 # telnet
 
-Connect to/banner grab various protocols
+Connect to various services
 
 ## Capabilities
 
 ```bash
-# Connect/banner grab SMTP
+# Connect to telnet
+telnet $IP
+
+# Connect to SMTP
 telnet $IP 25
-telnet -vn $IP 25
+
+# Connect to POP3
+telnet $IP 110
+
+# Connect to IMAP
+telnet $IP 143
 ```

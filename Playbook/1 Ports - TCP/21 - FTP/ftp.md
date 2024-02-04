@@ -1,16 +1,16 @@
-# Methodology
+---
+tags:
+  - tool
+  - ftp
+---
+# ftp
 
-## Enumerate
+Connect via FTP
+
+## Capabilities
 
 ```bash
-# Banner grab
-nc -vn $IP 21
-```
-
-## Connect
-
-```bash
-# Check anonymous authentication (anonymous:a)
+# Connect, anonymous authentication - anonymous:a
 ftp $IP
 ftp -A $IP
 

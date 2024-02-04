@@ -18,6 +18,7 @@ hashcat -m 0 hashes/hash wordlists/rockyou.txt --force
 
 # Crack hash with rule file
 hashcat -m 0 hash /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/best64.rule --force
+hashcat -m 0 hash /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/rockyou-30000.rule --force
 
 # Check cracked hash, add --show to the end of the last command
 hashcat -m 0 hash /usr/share/wordlists/rockyou.txt --force --show
@@ -26,11 +27,14 @@ hashcat -m 0 hash /usr/share/wordlists/rockyou.txt --force --show
 hashcat -b
 ```
 
-Convert a variety of encryption types with `ENC2john` where `ENC` is some type of encryption such as `pfx`, `ssh`, `keepass` and more
+**Notes:**
+
+- Convert a variety of encryption types with `ENC2john` where `ENC` is some type of encryption such as `pfx`, `ssh`, `keepass` and more
+- In the case a converted hash is still erroring after troubleshooting, resort to using 
 
 ### Custom Rule File
 
-[Reference](https://hashcat.net/wiki/doku.php?id=rule_based_attack)
+See [Reference](https://hashcat.net/wiki/doku.php?id=rule_based_attack)
 
 Given the following note left on a target
 

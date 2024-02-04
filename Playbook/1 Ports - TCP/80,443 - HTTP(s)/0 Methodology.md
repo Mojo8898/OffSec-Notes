@@ -1,5 +1,7 @@
 # Methodology
 
+## Enumerate
+
 ```bash
 # Add domain to /etc/hosts if necessary
 echo "$IP example.com" | sudo tee -a /etc/hosts
@@ -45,4 +47,5 @@ ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt -u ht
 # If still no leads, start recursive scans, prioritizing discovered vhosts
 ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt -u http://dev.example.com/FUZZ -ic -recursion --recursion-depth 1
 ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt -u http://example.com/FUZZ -ic -recursion --recursion-depth 1
+ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt -u http://example.com/FUZZ -ic -recursion --recursion-depth 1 -e .php,.aspx
 ```

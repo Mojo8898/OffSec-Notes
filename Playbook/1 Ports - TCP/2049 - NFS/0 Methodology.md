@@ -1,5 +1,7 @@
 # Methodology
 
+## Enumerate
+
 ```bash
 
 ```

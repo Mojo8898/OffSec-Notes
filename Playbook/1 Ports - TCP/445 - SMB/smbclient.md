@@ -18,9 +18,31 @@ smbclient //$IP/share -U 'username'
 smbclient //$IP/share -c 'put example.txt'
 ```
 
-### Interacting with a share
+### Session Commands
 
 ```bash
+# List files
+dir
+
+# Download file(s)
+get example.txt
+mget *.txt
+
+# Upload file(s)
+put example.txt
+mput *.txt
+
+# Delete file(s)
+del example.txt
+mdel *.txt
+
+# Make directories
+mkdir example_dir
+
+# Navigate filesystem
+pwd
+cd example_dir
+
 # Download all files in the current share
 mask ""
 recurse

@@ -23,8 +23,9 @@ ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-small-directories.txt -u 
 # File fuzzing
 ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-small-files.txt -u http://example.com/FUZZ
 
-# Recursive directory fuzzing (last resort)
+# Recursive directory fuzzing (last resort, use directory-list-2.3-small.txt on the OSCP)
 ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt -u http://example.com/FUZZ -ic -recursion --recursion-depth 1
+ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt -u http://example.com/FUZZ -ic -recursion --recursion-depth 1 -e .php,.aspx
 
 # Search for specific extensions
 ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-small-words.txt -u http://example.com/FUZZ -e .pdf,.txt

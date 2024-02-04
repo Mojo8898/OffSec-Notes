@@ -1,13 +1,16 @@
 # Methodology
 
-## Connection
+## Connect
 
 ```bash
-# Connect to MSSQL database
+# Connect with credentials
 impacket-mssqlclient $DOMAIN/username:password@$IP
+
+# Force NTLM authentication
+impacket-mssqlclient $DOMAIN/username:password@$IP -windows-auth
 ```
 
-## Enumeration
+## Enumerate Database
 
 ```mysql
 # Check version

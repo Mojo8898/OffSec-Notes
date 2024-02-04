@@ -1,6 +1,6 @@
 # Methodology
 
-## Connection
+## Connect
 
 ```bash
 # Connect locally
@@ -10,7 +10,7 @@ mysql -u root -p'password'
 mysql -u 'username' -p'password' -h $IP
 ```
 
-## Enumeration
+### Enumerate Database
 
 ```mysql
 # Check version

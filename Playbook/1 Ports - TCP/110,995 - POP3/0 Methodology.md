@@ -4,12 +4,17 @@
 
 ```bash
 # Banner grab
-nc -vn $IP 23
+nc -vn $IP 110
 ```
 
 ## Connect
 
 ```bash
-# Attempt to connect
-telnet $IP
+telnet $IP 110
+```
+
+### Session Commands
+
+```bash
+
 ```

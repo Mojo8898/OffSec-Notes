@@ -10,9 +10,13 @@ Interact with `postgresql` databases
 ## Capabilities
 
 ```bash
-# Login
-psql -h 127.0.0.1 -U postgres
+# Connect with credentials
+psql -h $IP -U username
+```
 
+### Session Commands
+
+```mysql
 # List databases
 \l
 

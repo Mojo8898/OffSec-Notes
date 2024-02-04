@@ -1,16 +1,16 @@
 # Methodology
 
-### Authentication
+## Connect
 
 ```bash
-# Username and password
+# Connect with credentials
 evil-winrm -u devdoc -p '1g0tTh3R3m3dy!!' -i 10.129.44.75
 
-# SSL
+# Connect using SSL
 evil-winrm -i <remote-host> -S -c <cert> -k <priv-key>
 ```
 
-### Session
+**Useful session commands:**
 
 ```bash
 # Display help menu
