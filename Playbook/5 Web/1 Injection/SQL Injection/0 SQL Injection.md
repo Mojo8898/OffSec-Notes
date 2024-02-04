@@ -2,9 +2,9 @@
 
 **References:**
 
+- [PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/SQL%20Injection)
 - [HackTricks](https://book.hacktricks.xyz/pentesting-web/sql-injection)
 - [pentestmonkey](https://pentestmonkey.net/category/cheat-sheet/sql-injection)
-- [PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/SQL%20Injection)
 - [PortSwigger Cheat Sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
 - [invicti](https://www.invicti.com/blog/web-security/sql-injection-cheat-sheet/)
 

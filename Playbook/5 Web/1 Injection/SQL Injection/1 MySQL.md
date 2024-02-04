@@ -4,6 +4,8 @@
 
 See [0 SQL Injection](0%20SQL%20Injection.md) for identification if necessary
 
+Utilize [PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/SQL%20Injection/MySQL%20Injection.md) for additional guidance
+
 ### Error-based Payloads vs Authentication Queries
 
 We can first attempt to dump information in an error response. This is particularly useful against authentication against authenticaton queries as a valid/invalid response will not display table information.

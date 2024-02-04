@@ -36,6 +36,9 @@ ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-small-files.txt -u http:/
 ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-small-files.txt -u http://dev.example.com/suspicious_dir/FUZZ
 ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-small-directories.txt -u http://dev.example.com/suspicious_dir/FUZZ
 
+# Search for specific extensions
+ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-small-words.txt -u http://example.com/FUZZ -e .pdf,.txt
+
 # If still no leads, try a bigger subdomain list
 ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt -u http://example.com -H 'Host: FUZZ.example.com'
 

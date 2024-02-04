@@ -26,6 +26,9 @@ ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-small-files.txt -u http:/
 # Recursive directory fuzzing (last resort)
 ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt -u http://example.com/FUZZ -ic -recursion --recursion-depth 1
 
+# Search for specific extensions
+ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-small-words.txt -u http://example.com/FUZZ -e .pdf,.txt
+
 # GET parameter fuzzing
 ffuf -w /usr/share/seclists/Discovery/Web-Content/burp-parameter-names.txt -u http://example.com?FUZZ=key
 

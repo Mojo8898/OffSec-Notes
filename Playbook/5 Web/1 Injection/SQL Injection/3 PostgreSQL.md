@@ -4,6 +4,8 @@
 
 See [0 SQL Injection](0%20SQL%20Injection.md) for identification if necessary
 
+Utilize [PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/SQL%20Injection/PostgreSQL%20Injection.md) for additional guidance
+
 ### Error-based Payloads vs Authentication Queries
 
 We can first attempt to dump information in an error response. This is particularly useful against authentication against authenticaton queries as a valid/invalid response will not display table information.
@@ -22,7 +24,7 @@ We can first attempt to dump information in an error response. This is particula
 ' or 1=1 in (SELECT password FROM users WHERE username = 'admin') -- //
 ```
 
-Refer to [pentestmonkey](https://pentestmonkey.net/cheat-sheet/sql-injection/mysql-sql-injection-cheat-sheet) for additional example queries
+Refer to [PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/SQL%20Injection/PostgreSQL%20Injection.md) for additional example queries
 
 ### UNION-based/Error-based payloads vs Search Queries
 

