@@ -1,6 +1,12 @@
+---
+tags:
+  - tool
+  - windows
+  - privilege_escalation
+---
 # PowerUp
 
-Windows privilege escalation tool
+Clearinghouse of common Windows privilege escalation vectors that rely on misconfigurations - [PowerUp](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc)
 
 ## Methodology
 
@@ -19,8 +25,6 @@ powershell -ep bypass
 ```
 
 ### Capabilities
-
-[README.md](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/README.md)
 
 ```powershell
 # Enable privilege

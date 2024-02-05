@@ -1,5 +1,8 @@
 ---
 tags:
+  - tool
+  - windows
+  - lateral_movement
 ---
 # RunasCs
 

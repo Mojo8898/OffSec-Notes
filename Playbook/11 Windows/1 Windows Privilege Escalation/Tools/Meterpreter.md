@@ -1,7 +1,11 @@
 ---
 tags:
+  - tool
+  - windows
+  - privilege_escalation
+  - metasploit
 ---
-# meterpreter priv-esc
+# Meterpreter
 
 ```bash
 # Post exploitation command flow

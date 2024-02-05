@@ -1,6 +1,11 @@
+---
+tags:
+  - tool
+  - active_directory
+---
 # PowerView
 
-Network reconnaissance and domain enumeration tool
+Network reconnaissance and domain enumeration tool - [PowerView](https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon)
 
 ## Methodology
 
@@ -19,7 +24,7 @@ powershell -ep bypass
 
 ### Capabilities
 
-[README.md](https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/README.md)
+
 
 ```powershell
 

@@ -1,9 +1,12 @@
 ---
 tags:
+  - tool
+  - active_directory
+  - kerberos
 ---
 # Rubeus
 
-https://github.com/GhostPack/Rubeus
+C# toolset for raw Kerberos interaction and abuses - [Rubeus](https://github.com/GhostPack/Rubeus)
 
 ## Capabilities
 

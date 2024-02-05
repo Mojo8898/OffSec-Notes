@@ -1,5 +1,6 @@
 ---
 tags:
+  - tool
   - smb
   - ldap
   - wmi
@@ -36,7 +37,7 @@ nxc smb $IP -u 'a' -p '' --rid-brute 10000
 nxc smb $IP -u users.txt -p users.txt --continue-on-success
 
 # Password spray
-nxc smb $IP -u users.txt -p 'Nexus123!' -d corp.com --continue-on-success
+nxc smb $IP -u users.txt -p 'password' -d corp.com --continue-on-success
 ```
 
 ### Credentialed commands

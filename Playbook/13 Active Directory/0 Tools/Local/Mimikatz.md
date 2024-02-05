@@ -1,4 +1,12 @@
+---
+tags:
+  - tool
+  - windows
+  - active_directory
+---
 # Mimikatz
+
+Exploit Windows security - [Mimikatz](https://github.com/gentilkiwi/mimikatz)
 
 ## Methodology
 
