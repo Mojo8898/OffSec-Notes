@@ -20,6 +20,6 @@
 
 ## Password Hashes
 
-|Hash|Hash Type|Where Found?|Notes|
-|---|---|---|---|
-|||||
+| Username | Hash | Hash Type | Where Found? | Notes |
+| ---- | ---- | ---- | ---- | ---- |
+|  |  |  |  |  |
