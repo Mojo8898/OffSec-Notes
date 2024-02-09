@@ -5,11 +5,14 @@ tags:
 
 Gain situational awareness in Windows Active Directory environments
 
+```bash
+cp /usr/share/windows-resources/powersploit/Recon/PowerView.ps1 .
+```
+
 ## Capabilities
 
 ```powershell
 # Import PowerView.ps1
-Import-Module .\PowerView.ps1
 . .\PowerView.ps1
 
 # Enumerate domain information (check Pdc)
@@ -23,7 +26,7 @@ Get-NetUser | select cn,pwdlastset,lastlogon
 # Enumerate group objects
 Get-NetGroup
 Get-NetGroup | select cn
-Get-NetGroup "Sales Department" | select member
+Get-NetGroup "$GROUP" | select member
 Get-NetGroup -UserName robert | select cn
 
 # Enumerate computer objects
@@ -34,27 +37,20 @@ Get-NetComputer | select dnshostname,operatingsystem,operatingsystemversion
 Find-LocalAdminAccess
 
 # Query session information
-Get-NetSession -ComputerName client74
+Get-NetSession -ComputerName $COMPUTER
 
-# Enumerate SPNs for all users
+# Enumerate SPNs linked to users
 Get-NetUser -SPN | select samaccountname,serviceprincipalname
 
 # Retrieve the ACL for the specified object
-Get-ObjectAcl -Identity stephanie
-Get-ObjectAcl -Identity "Management Department" | select SecurityIdentifier,ActiveDirectoryRights
+Get-ObjectAcl -Identity $OBJECT | select SecurityIdentifier,ActiveDirectoryRights
+Convert-SidToName $SID
+"$SID","$SID" | Convert-SidToName
 
-# Check if any users have "GenericAll" over "Management Department"
-Get-ObjectAcl -Identity "Management Department" | ? {$_.ActiveDirectoryRights -eq "GenericAll"} | select SecurityIdentifier,ActiveDirectoryRights
+# Check if any users have "GenericAll" over a specified object
+Get-ObjectAcl -Identity $OBJECT | ? {$_.ActiveDirectoryRights -eq "GenericAll"} | select SecurityIdentifier,ActiveDirectoryRights
 
-# Add and remove "setphanie" from "Management Department"
-net group "Management Department" stephanie /add /domain
-net group "Management Department" stephanie /del /domain
-
-# Convert SID to object name
-Convert-SidToName S-1-5-21-3633066894-3045594602-554748096-500
-"S-1-5-21-1987370270-658905905-1781884369-512","S-1-5-21-1987370270-658905905-1781884369-1104","S-1-5-32-548","S-1-5-18","S-1-5-21-1987370270-658905905-1781884369-519" | Convert-SidToName
-
-# Find domain shares
+# Check domain shares
 Find-DomainShare
 Find-DomainShare -CheckShareAccess
 

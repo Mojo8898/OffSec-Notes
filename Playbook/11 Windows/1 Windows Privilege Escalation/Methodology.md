@@ -2,7 +2,7 @@
 
 **Note:** Commands that have equivalents for both CMD and PowerShell will be separated with `---`, with the CMD command first, followed by their PowerShell equivalents.
 
-## Establish Peristence
+## Prep Work
 
 ```powershell
 # Establish a working environment to drop files into
@@ -53,15 +53,19 @@ Get-Process | Select-Object Id, ProcessName, Path | Sort-Object Id
 
 # Enumerate user directories
 tree C:\Users /a /f
-Get-ChildItem -Path C:\Users\$USER\ -Include *.txt,*.pdf,*.xls,*.xlsx,*.doc,*.docx -File -Recurse -ErrorAction SilentlyContinue
+Get-ChildItem -Path C:\Users -Include ConsoleHost_history.txt -File -Force -Recurse -ErrorAction SilentlyContinue
+Get-ChildItem -Path C:\Users -Include *.txt,*.pdf,*.xls,*.xlsx,*.doc,*.docx -File -Recurse -ErrorAction SilentlyContinue
 
 # Check file permissions
 icacls $TARGET /c
 
 # Search for sensitive files
-Get-ChildItem -Path C:\ -Include *.kdbx -File -Recurse -ErrorAction SilentlyContinue              # KeePass database files
-Get-ChildItem -Path C:\xampp -Include *.txt,*.ini -File -Recurse -ErrorAction SilentlyContinue    # my.ini is the configuration file for MySQL
-Get-ChildItem -Path C:\Users -Include local.txt,proof.txt -File -Recurse -ErrorAction SilentlyContinue
+Get-ChildItem -Path C:\xampp -Include my.ini -File -Recurse -ErrorAction SilentlyContinue
+Get-ChildItem -Path C:\xampp -Include *.txt,*.ini -File -Recurse -ErrorAction SilentlyContinue
+Get-ChildItem -Path C:\inetpub -Include *.txt,*.ini -File -Recurse -ErrorAction SilentlyContinue
+Get-ChildItem -Path C:\ -Include *.kdbx -File -Recurse -ErrorAction SilentlyContinue    # KeePass database files
+Get-ChildItem -Path C:\ -Include .git -Directory -Recurse -Force -ErrorAction SilentlyContinue
+Get-ChildItem -Path C:\ -Include *.doc,*.docx,*.xls,*.xlsx,*.pdf -File -Recurse -ErrorAction SilentlyContinue
 
 # Check command history
 Get-History
@@ -83,7 +87,8 @@ $env:path
 # Check scheduled tasks
 schtasks /query /fo LIST /v > tasks.txt
 dos2unix tasks.txt     # On kali
-less tasks.txt         # On kali, search for tasks owned by privileged accounts. Check "TaskName", "Next Run Time", "Author", and "Task To Run"
+less tasks.txt         # On kali, search for tasks owned by privileged accounts. Check "TaskName", "Next Run Time", "Author", "Task To Run", and "Run As User"
+schtasks /query /fo LIST /v /TN "$TASK"
 ```
 
 ## Automated Tools

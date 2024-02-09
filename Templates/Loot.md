@@ -1,25 +1,25 @@
 # Loot
 
-## Emails
+## Known Accounts
+
+| Username | Password | Host | Privileges | Service | Scope | Where Found? | Notes |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+|  |  |  |  |  |  |  |  |
+
+## Password Hashes
+
+| Username | Host | Privileges | Hash | Hash Type | Where Found? | Notes |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+|  |  |  |  |  |  |  |
+
+## Mystery Emails
 
 |Email|Where Found?|Notes|
 |---|---|---|
 |||
 
-## Users
+## Mystery Users
 
-|Username|Where Found?|Notes|
-|---|---|---|
-|||
-
-## Passwords
-
-|Username|Password|Service|Where Found?|Notes|
-|---|---|---|---|---|
-||||||
-
-## Password Hashes
-
-| Username | Hash | Hash Type | Where Found? | Notes |
-| ---- | ---- | ---- | ---- | ---- |
-|  |  |  |  |  |
+| Username | Where Found? | Notes |
+| ---- | ---- | ---- |
+|  |  |  |

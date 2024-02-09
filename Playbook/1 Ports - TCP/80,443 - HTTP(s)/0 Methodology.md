@@ -49,3 +49,9 @@ ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt -u
 ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt -u http://example.com/FUZZ -ic -recursion --recursion-depth 1
 ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt -u http://example.com/FUZZ -ic -recursion --recursion-depth 1 -e .php,.aspx
 ```
+
+**Special Characters String:**
+
+```
+~!@#$%^&*()-_+={}][|\`,./?;:'"<>
+```

@@ -22,13 +22,12 @@ cp /usr/lib/bloodhound/resources/app/Collectors/SharpHound.exe .
 ```bash
 # Import Sharphound.ps1
 Import-Module .\SharpHound.ps1
-
-# Check help menu
 Get-Help Invoke-BloodHound
 
 # Execute Bloodhound
-Invoke-BloodHound -CollectionMethod All -OutputDirectory C:\Users\stephanie\Desktop\ -OutputPrefix "stephanie_client75"
-Invoke-BloodHound -CollectionMethod All -OutputDirectory C:\Temp\ -OutputPrefix "alaading"
+.\SharpHound.exe -c All --outputprefix "$USER_$DOMAIN"
+Invoke-BloodHound -CollectionMethod All -OutputPrefix "$USER_$DOMAIN"
+Invoke-BloodHound -CollectionMethod All -OutputPrefix "$USER_$DOMAIN"
 ```
 
 ### BloodHound
@@ -41,9 +40,8 @@ sudo rm -r /etc/neo4j/data
 
 # Start neo4j (creds - neo4j:neo4j)
 sudo neo4j start
+firefox http://localhost:7474 &
 ```
-
-Connect via `http` at `http://localhost:7474` and change the default password
 
 ```bash
 # Start bloodhound

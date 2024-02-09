@@ -11,6 +11,9 @@ nmap -p 25 --script smtp-open-relay $IP -v
 
 # Send an email with our IP to see if they click on it
 swaks -t target@$DOMAIN -f user@example.com -h 'Subject: example_subject' --body 'http://OUR_IP' -s $IP --suppress-data
+
+# Send a malicious phishing email
+
 ```
 
 ## Connect

