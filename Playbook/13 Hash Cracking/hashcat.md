@@ -13,12 +13,12 @@ Reference: [example_hashes](https://hashcat.net/wiki/doku.php?id=example_hashes)
 
 ```bash
 # Crack hash
-hashcat -m 0 hash /usr/share/wordlists/rockyou.txt --force
-hashcat -m 0 hashes/hash wordlists/rockyou.txt --force
+hashcat -m 0 $HASH /usr/share/wordlists/rockyou.txt --force
+hashcat -m 0 hashes/$HASH wordlists/rockyou.txt --force
 
 # Crack hash with rule file
-hashcat -m 0 hash /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/best64.rule --force
-hashcat -m 0 hash /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/rockyou-30000.rule --force
+hashcat -m 0 $HASH /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/best64.rule --force
+hashcat -m 0 $HASH /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/rockyou-30000.rule --force
 
 # Check cracked hash, add --show to the end of the last command
 hashcat -m 0 hash /usr/share/wordlists/rockyou.txt --force --show

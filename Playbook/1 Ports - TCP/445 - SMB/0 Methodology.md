@@ -18,7 +18,7 @@ nxc smb $IP -u '' -p '' -M spider_plus -o DOWNLOAD_FLAG=True OUTPUT_FOLDER=.
 cat $IP.json | jq '. | map_values(keys)'
 
 # Manually enumerate during spider scan
-smbclient //$IP/share
+impacket-smbclient $DOMAIN/$USERNAME:$PASSWORD@$IP -dc-ip $DC_IP
 
 # Brute force usernames through RIDs
 nxc smb $IP -u 'a' -p '' --rid-brute 10000

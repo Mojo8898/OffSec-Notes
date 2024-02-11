@@ -54,9 +54,9 @@ sudo crontab -l
 dpkg -l
 
 # Check for unmounted drives
-cat /etc/fstab    # Lists all drives that will be mounted at boot time
-mount             # Lists all mounted filesystems
-lsblk             # Lists all available disks
+ls /dev 2>/dev/null | grep -i "sd"
+cat /etc/fstab 2>/dev/null | grep -v "^#" | grep -Pv "\W*\#" 2>/dev/null
+lsblk
 
 # List kernel module information
 lsmod
@@ -84,8 +84,6 @@ echo $PATH
 
 # Check timers
 systemctl list-timers --all
-
-
 ```
 
 ## Automated Tools

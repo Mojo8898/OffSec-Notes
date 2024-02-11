@@ -5,7 +5,7 @@ tags:
 ---
 # Ligolo-ng
 
-a _simple_, _lightweight_ and _fast_ tool that allows pentesters to establish tunnels from a reverse TCP/TLS connection using a **tun interface** (without the need of SOCKS) - [ligolo-ng](https://github.com/nicocha30/ligolo-ng)
+A _simple_, _lightweight_ and _fast_ tool that allows pentesters to establish tunnels from a reverse TCP/TLS connection using a **tun interface** (without the need of SOCKS) - [ligolo-ng](https://github.com/nicocha30/ligolo-ng)
 
 ```bash
 # Configure the network interface

@@ -1,5 +1,7 @@
 ---
 tags:
+  - tool
+  - active_directory
 ---
 # BloodHound
 

