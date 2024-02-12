@@ -9,5 +9,5 @@ Perform SSL and TLS cryptographic functions
 
 ```bash
 # Generate a password for /etc/passwd file
-openssl passwd password123
+openssl passwd Password123!
 ```

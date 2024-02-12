@@ -11,13 +11,12 @@ hostname
 # Check sudo permissions, utilize GTFOBins to check any non-default configurations
 sudo -l
 
-# Find SUID/SGID Binaries
+# Check for SUID binaries
 find / -user root -perm -4000 -exec ls -ldb {} \; 2>/dev/null
-find / -user root -perm -6000 -exec ls -ldb {} \; 2>/dev/null
 
 # Find files owned by target user/group
 find / -user $USER -type f -exec ls -ldb {} \; 2>/dev/null
-find / -group $USER -type f -exec ls -ldb {} \; 2>/dev/null
+find / -group $GROUP -type f -exec ls -ldb {} \; 2>/dev/null
 
 # Find writable files/directories
 find / -writable -type f -exec ls -ldb {} \; 2>/dev/null
@@ -29,6 +28,7 @@ ls /var/www
 
 # Check processes
 ps -ef
+watch -n 1 "ps -aux | grep $STRING"
 
 # Check Network information
 netstat -tunlp
@@ -84,6 +84,9 @@ echo $PATH
 
 # Check timers
 systemctl list-timers --all
+
+# Check SGID binaries
+find / -user root -perm -6000 -exec ls -ldb {} \; 2>/dev/null
 ```
 
 ## Automated Tools

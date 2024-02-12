@@ -4,7 +4,12 @@
 
 ```bash
 # Enumerate the public community string
-snmpwalk -v2c -c public $IP -Oa
+snmpbulkwalk -Cr1000 -c public -v2c $TARGET_IP . > snmpwalk.out
+
+# Grep output
+grep -oP '::.*?\.' snmpwalk.out | sort | uniq -c | sort -n
+grep hrSWRun snmpwalk.out | less -S
+grep hrSWRun snmpwalk.out | grep $ID
 
 # Brute force community strings
 python3 snmpbrute.py -t $IP -f /usr/share/seclists/Discovery/SNMP/common-snmp-community-strings.txt

