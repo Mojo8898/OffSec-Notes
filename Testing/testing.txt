@@ -7,24 +7,22 @@ $enc = [System.Text.Encoding]::UTF8
 
 function xor {
     param(
-        [string]$data,
-        [string]$key
+        [string]$dataBytes,
+        [string]$keyBytes
     )
-    $keyBytes = $enc.GetBytes($key)
-    $dataBytes = $enc.GetBytes($enc.GetString([System.Convert]::FromBase64String($data)))
 
-    $xordData = $(for ($i = 0; $i -lt $dataBytes.length; ) {
-        for ($j = 0; $j -lt $keyBytes.length; $j++) {
-            if ($i -ge $dataBytes.Length) {
-                break
-            }
-            $dataBytes[$i] -bxor $keyBytes[$j]
-            $i++
-        }
-    })
+    for ($i = 0; $i -lt $dataBytes.Length; $i++) {
+        $dataBytes[$i] -bxor $keyBytes[$i % $keyBytes.Length]
+    }
 
-    return $enc.GetString($xordData)
+    return $dataBytes
 }
 
-$hehe = xor -data $a -key $b
-Invoke-Expression $hehe
+$keyBytes = $enc.GetBytes($key)
+$dataBytes = [Convert]::FromBase64String($data)
+$decryptedBytes = xor -dataBytes $dataBytes -keyBytes $keyBytes
+$decryptedBytes = Invoke-XorDecryption -dataBytes $dataBytes -keyBytes $keyBytes
+$decryptedString = $enc.GetString($decryptedBytes)
+
+Write-Output $decryptedString
+# Invoke-Expression $decryptedString
