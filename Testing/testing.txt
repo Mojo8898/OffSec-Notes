@@ -1,28 +1,19 @@
-param(
-    [string]$a,
-    [string]$b
-)
-
-$enc = [System.Text.Encoding]::UTF8
-
-function xor {
-    param(
-        [string]$dataBytes,
-        [string]$keyBytes
+Function hehe {
+    Param (
+        [String]$Data,
+        [Parameter(Mandatory=$false)]
+        [String]$Key,
+        [Parameter(Mandatory=$false)]
+        [String]$IVector
     )
 
-    for ($i = 0; $i -lt $dataBytes.Length; $i++) {
-        $dataBytes[$i] -bxor $keyBytes[$i % $keyBytes.Length]
-    }
+    $AES = [System.Security.Cryptography.Aes]::Create()
 
-    return $dataBytes
+    $AES.Key = [System.Convert]::FromBase64String($Key)
+    $AES.IV = [System.Convert]::FromBase64String($IVector)
+    $EncryptedBytes = [System.Convert]::FromBase64String($Data)
+    $Decryptor = $AES.CreateDecryptor()
+    $DecryptedBytes = $Decryptor.TransformFinalBlock($EncryptedBytes, 0, $EncryptedBytes.Length)
+    $DecryptedString = [System.Text.Encoding]::Unicode.GetString($DecryptedBytes)
+    Write-Output "DecryptedString: $DecryptedString"
 }
-
-$keyBytes = $enc.GetBytes($key)
-$dataBytes = [Convert]::FromBase64String($data)
-$decryptedBytes = xor -dataBytes $dataBytes -keyBytes $keyBytes
-$decryptedBytes = Invoke-XorDecryption -dataBytes $dataBytes -keyBytes $keyBytes
-$decryptedString = $enc.GetString($decryptedBytes)
-
-Write-Output $decryptedString
-# Invoke-Expression $decryptedString
