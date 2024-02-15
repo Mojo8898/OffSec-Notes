@@ -1,10 +1,12 @@
 ---
 tags:
+  - tool
+  - ssh
   - routing
 ---
 # ssh
 
-SSH Port forwarding
+Secure Shell
 
 ## Capabilities
 

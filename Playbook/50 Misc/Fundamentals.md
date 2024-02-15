@@ -16,7 +16,7 @@ SSH means 'secure shell', and is one of the most fundamental ways of remotely ac
 
 SSH access is controlled by keys, using public-key cryptography.
 
-The SSH protocol also powers many other tools and services, such as [Secure Copy](../10%20Linux/Tools/SSH/scp.md) and port forwarding.
+The SSH protocol also powers many other tools and services, such as [Secure Copy](../1%20Ports%20-%20TCP/22%20-%20SSH/scp.md) and port forwarding.
 
 **Basic Syntax**
 

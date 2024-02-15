@@ -1,9 +1,11 @@
 ---
 tags:
+  - tool
+  - ssh
 ---
 # scp
 
-Brief description
+Copy files over SSH
 
 ## Capabilities
 
