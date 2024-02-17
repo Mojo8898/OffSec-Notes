@@ -38,9 +38,6 @@ Invoke-BloodHound -CollectionMethod All -OutputPrefix "$USER_$DOMAIN"
 We can now run BloodHound
 
 ```bash
-# Clear the database before starting a new session
-sudo rm -r /etc/neo4j/data
-
 # Start neo4j (creds - neo4j:neo4j)
 sudo neo4j start
 firefox http://localhost:7474 &
@@ -50,6 +47,8 @@ firefox http://localhost:7474 &
 # Start bloodhound
 bloodhound
 ```
+
+**Note:** You can clear the database from inside the bloodhound GUI at the bottom of "Database Info"
 
 We can now use the `Upload Data` function on the right side of the GUI to upload the zip file, or drag-and-drop it into BloodHound's main window.
 

