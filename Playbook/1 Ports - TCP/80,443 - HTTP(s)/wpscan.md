@@ -16,7 +16,7 @@ wpscan --url http://example.com --disable-tls-checks --detection-mode aggressive
 
 # Check plugins/users
 wpscan --url http://example.com --detection-mode aggressive -e ap,u -o wpscan.out
-wpscan --url http://example.com --detection-mode aggressive -e ap,u --plugins-detection aggressive -o wpscan.out # Can take up to an hour
+wpscan --url http://example.com --detection-mode aggressive -e ap,u --plugins-detection aggressive -o wpscan_long.out # Can take up to an hour
 ```
 
 ### API Token

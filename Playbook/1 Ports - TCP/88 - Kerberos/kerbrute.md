@@ -25,6 +25,7 @@ while IFS= read -r password; do ./kerbrute passwordspray -d $DOMAIN --dc $IP use
 ```bash
 # Usernames
 /usr/share/seclists/Usernames/Names/names.txt # 10177 lines
+/usr/share/seclists/Usernames/xato-net-10-million-usernames.txt # 8295455 lines
 
 # Passwords (short)
 /usr/share/seclists/Passwords/2020-200_most_used_passwords.txt # 197 lines

