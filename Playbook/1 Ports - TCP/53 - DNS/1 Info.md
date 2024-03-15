@@ -9,7 +9,8 @@
 - `ptr` Pointer Records are used in reverse lookup zones and can find the records associated with an IP address.
 - `cname` Canonical Name Records are used to create aliases for other host records.
 - `txt` Text records can contain any arbitrary data and be used for various purposes, such as domain ownership verification.
-- `SOA` Hmm
+- `soa` Start of authority record.
+- `srv` Service record.
 
 ### Priority values
 

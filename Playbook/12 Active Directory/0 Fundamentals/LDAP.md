@@ -1,4 +1,4 @@
-# Fundamentals
+# LDAP
 
 ### Distinguished Name (DN)
 

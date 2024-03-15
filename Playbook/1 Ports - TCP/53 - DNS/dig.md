@@ -15,7 +15,7 @@ dig any @$IP $DOMAIN
 dig a @$IP $DOMAIN
 
 # Reverse lookup
-dig -x @$IP $IP
+dig -x $IP
 
 # Attempt a zone transfer
 dig axfr @$IP

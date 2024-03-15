@@ -87,7 +87,7 @@ Requires:
 
 ### Pass the Hash
 
-[wmiexec](0%20Tools/Connect/wmiexec.md)
+[wmiexec](1%20Tools/Remote%20Connection/wmiexec.md)
 
 This techniques works against Active Directory domain accounts and the built-in local administrator account.
 

