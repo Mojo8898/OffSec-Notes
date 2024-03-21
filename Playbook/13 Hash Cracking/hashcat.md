@@ -21,7 +21,10 @@ hashcat -m 0 $HASH /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/
 hashcat -m 0 $HASH /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/rockyou-30000.rule --force
 
 # Check cracked hash, add --show to the end of the last command
-hashcat -m 0 hash /usr/share/wordlists/rockyou.txt --force --show
+hashcat -m 0 $HASH /usr/share/wordlists/rockyou.txt --force --show
+
+# Use a character-set
+hashcat -a 3 -m 0 $HASH example_prepend_?d?d?d?d?d?d?d?d?d
 
 # Benchmark
 hashcat -b

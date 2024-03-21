@@ -22,6 +22,7 @@ powershell -ep bypass
 ```powershell
 # Check privileges
 whoami /all
+tree C:\Users /a /f
 
 # Check local users/groups
 net user --- Get-LocalUser
@@ -44,15 +45,11 @@ route print             # Look for attack vectors to other systems or networks
 Get-ItemProperty "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*" | select DisplayName,DisplayVersion
 Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*" | select DisplayName,DisplayVersion
 
-# Check dotnet version
-gci 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP' -Recurse | Get-ItemProperty -Name Version,Release -ErrorAction 0 | Where { $_.PSChildName -match '^(?!S)\p{L}'} | Select PSChildName, Version, Release
-
 # Check running processes
 Get-Process | Sort-Object Id
 Get-Process | Select-Object Id, ProcessName, Path | Sort-Object Id
 
 # Enumerate user directories
-tree C:\Users /a /f
 gci -Path C:\Users -Include ConsoleHost_history.txt -File -Force -Recurse -ErrorAction SilentlyContinue
 gci -Path C:\Users -Include *.txt,*.pdf,*.xls,*.xlsx,*.doc,*.docx -File -Recurse -ErrorAction SilentlyContinue
 
@@ -94,6 +91,9 @@ dos2unix tasks.txt     # On kali
 less tasks.txt         # On kali, search for tasks owned by privileged accounts. Check "TaskName", "Next Run Time", "Author", "Task To Run", and "Run As User"
 schtasks /query /fo LIST /v /TN "$TASK"
 cat tasks.txt | grep \.exe | grep -iv system32
+
+# Check dotnet version
+gci 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP' -Recurse | Get-ItemProperty -Name Version,Release -ErrorAction 0 | Where { $_.PSChildName -match '^(?!S)\p{L}'} | Select PSChildName, Version, Release
 ```
 
 ### Exploitation

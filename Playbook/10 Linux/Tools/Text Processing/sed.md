@@ -14,4 +14,7 @@ sed -i '/^1/d' filename
 
 # Replace instances of "; " with ";\n"
 sed -i 's/; /;\n/g' filename
+
+# Prepend text to all lines in a file
+sed -i 's/^/PREFIX/' file.txt
 ```

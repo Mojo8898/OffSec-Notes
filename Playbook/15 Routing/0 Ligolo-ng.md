@@ -9,7 +9,7 @@ A _simple_, _lightweight_ and _fast_ tool that allows pentesters to establish tu
 
 ```bash
 # Configure the network interface
-sudo ip tuntap add user kali mode tun ligolo
+sudo ip tuntap add user kali mode tun dev ligolo
 sudo ip link set ligolo up
 
 # Cleanup the network interface (automatically performed on reboot)
